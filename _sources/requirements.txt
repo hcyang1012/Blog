@@ -1,0 +1,7 @@
+recommonmark
+Sphinx
+sphinx_rtd_theme
+sphinx-markdown-tables
+sphinx-sitemap
+travis-sphinx
+
