@@ -9,13 +9,13 @@ install:
 script:
       - travis-sphinx build -s . --nowarn
 
-# after_success:
-#       - travis-sphinx deploy
-      
+after_success:
+      - travis-sphinx deploy
+
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep_history: true
   on:
     branch: master
