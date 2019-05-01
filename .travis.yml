@@ -9,8 +9,8 @@ install:
 script:
       - travis-sphinx build -s . --nowarn
 
-after_success:
-      - travis-sphinx deploy
+# after_success:
+#       - travis-sphinx deploy
 
 deploy:
   provider: pages
