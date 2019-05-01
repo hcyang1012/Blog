@@ -10,6 +10,13 @@ Welcome to blog's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+.. toctree::
+	:caption: Beaglebone Black
+	:glob:
+	:titlesonly:
+
+	bbb/**
+
 
 
 Indices and tables
