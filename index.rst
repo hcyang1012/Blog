@@ -11,5 +11,7 @@ Heecheol Yang
    :caption: Contents:
 
 .. toctree::
+    :maxdepth: 1
+    
     0_blog/index.rst
     1_bbb/index.rst
