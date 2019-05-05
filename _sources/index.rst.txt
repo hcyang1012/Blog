@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to blog's documentation!
+Heecheol Yang
 ================================
 
 .. toctree::
@@ -11,17 +11,5 @@ Welcome to blog's documentation!
    :caption: Contents:
 
 .. toctree::
-	:caption: Beaglebone Black
-	:glob:
-	:titlesonly:
-
-	bbb/**
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+    0_blog/index.rst
+    1_bbb/index.rst
