@@ -6,3 +6,4 @@ Leetcode Practice
 	:titlesonly:
 
 	./0_TwoSum_20190506.md
+	./1_Minimum_Absolute_Difference_In_BST_20190506.md
