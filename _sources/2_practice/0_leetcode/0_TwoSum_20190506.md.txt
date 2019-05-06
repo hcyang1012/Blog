@@ -1,6 +1,13 @@
 # Two Sum
 
 문제 링크 :  [Link](https://leetcode.com/problems/two-sum/)
+## 접근 방식
+
+1. 주어진 Number Vector의 값을 Hash Map에 넣는다.
+- Key : Number Vector의 각 값
+- Value : 각 값의 Index
+2. Number Vector를 Traverse 하되, 합을 계산 시 Target 값을 만드는 값이 Hash에 있는지 확인한다.
+3. Hash에 값이 있는 경우, Value(값에 대한 Index)가 Number Vector에서 현재 Traverse하고 있는 것과 중복되지 않는다면 쌍을 찾은 것이므로 Return.
 
 ## Wrong solution 1
 ### Code

@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="색인" href="../../genindex.html" />
     <link rel="search" title="검색" href="../../search.html" />
+    <link rel="next" title="Minimum Absolute Difference in BST" href="1_Minimum_Absolute_Difference_In_BST_20190506.html" />
     <link rel="prev" title="Leetcode Practice" href="index.html" /> 
 </head>
 
@@ -86,11 +87,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Practice</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Leetcode Practice</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Two Sum</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">접근 방식</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wrong-solution-1">Wrong solution 1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#correct-solution-1-not-optimized">Correct solution 1 - Not optimized</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#correct-solution-2-optimized">Correct solution 2 - Optimized</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="1_Minimum_Absolute_Difference_In_BST_20190506.html">Minimum Absolute Difference in BST</a></li>
 </ul>
 </li>
 </ul>
@@ -166,6 +169,20 @@
   <div class="section" id="two-sum">
 <h1>Two Sum<a class="headerlink" href="#two-sum" title="제목 주소">¶</a></h1>
 <p>문제 링크 :  <a class="reference external" href="https://leetcode.com/problems/two-sum/">Link</a></p>
+<div class="section" id="id1">
+<h2>접근 방식<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<ol class="simple">
+<li>주어진 Number Vector의 값을 Hash Map에 넣는다.</li>
+</ol>
+<ul class="simple">
+<li>Key : Number Vector의 각 값</li>
+<li>Value : 각 값의 Index</li>
+</ul>
+<ol class="simple">
+<li>Number Vector를 Traverse 하되, 합을 계산 시 Target 값을 만드는 값이 Hash에 있는지 확인한다.</li>
+<li>Hash에 값이 있는 경우, Value(값에 대한 Index)가 Number Vector에서 현재 Traverse하고 있는 것과 중복되지 않는다면 쌍을 찾은 것이므로 Return.</li>
+</ol>
+</div>
 <div class="section" id="wrong-solution-1">
 <h2>Wrong solution 1<a class="headerlink" href="#wrong-solution-1" title="제목 주소">¶</a></h2>
 <div class="section" id="code">
@@ -224,8 +241,8 @@
 </div>
 <div class="section" id="correct-solution-1-not-optimized">
 <h2>Correct solution 1 - Not optimized<a class="headerlink" href="#correct-solution-1-not-optimized" title="제목 주소">¶</a></h2>
-<div class="section" id="id1">
-<h3>Code<a class="headerlink" href="#id1" title="제목 주소">¶</a></h3>
+<div class="section" id="id2">
+<h3>Code<a class="headerlink" href="#id2" title="제목 주소">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">twoSum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
@@ -258,8 +275,8 @@
 </div>
 <div class="section" id="correct-solution-2-optimized">
 <h2>Correct solution 2 - Optimized<a class="headerlink" href="#correct-solution-2-optimized" title="제목 주소">¶</a></h2>
-<div class="section" id="id2">
-<h3>Code<a class="headerlink" href="#id2" title="제목 주소">¶</a></h3>
+<div class="section" id="id3">
+<h3>Code<a class="headerlink" href="#id3" title="제목 주소">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">twoSum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
@@ -294,6 +311,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="1_Minimum_Absolute_Difference_In_BST_20190506.html" class="btn btn-neutral float-right" title="Minimum Absolute Difference in BST" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Leetcode Practice" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

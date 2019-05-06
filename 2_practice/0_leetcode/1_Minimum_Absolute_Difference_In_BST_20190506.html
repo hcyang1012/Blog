@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Minimum Absolute Difference in BST &mdash; blog 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../../genindex.html" />
+    <link rel="search" title="검색" href="../../search.html" />
+    <link rel="prev" title="Two Sum" href="0_TwoSum_20190506.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> blog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_bbb/index.html">Beaglebone Black</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Practice</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Leetcode Practice</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="0_TwoSum_20190506.html">Two Sum</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Minimum Absolute Difference in BST</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">문제 목표</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">접근 방식</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#correct-code">Correct Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Practice</a> &raquo;</li>
+        
+          <li><a href="index.html">Leetcode Practice</a> &raquo;</li>
+        
+      <li>Minimum Absolute Difference in BST</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/2_practice/0_leetcode/1_Minimum_Absolute_Difference_In_BST_20190506.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="minimum-absolute-difference-in-bst">
+<h1>Minimum Absolute Difference in BST<a class="headerlink" href="#minimum-absolute-difference-in-bst" title="제목 주소">¶</a></h1>
+<p>문제 링크 :  <a class="reference external" href="https://leetcode.com/problems/minimum-absolute-difference-in-bst/">Link</a></p>
+<div class="section" id="id1">
+<h2>문제 목표<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<p>BST에 있는 Node 둘 아무 두 Node를 선택하였을 때 그 차의 절대값(Absolute Difference)가 가장 작은 값을 찾아라.</p>
+</div>
+<div class="section" id="id2">
+<h2>접근 방식<a class="headerlink" href="#id2" title="제목 주소">¶</a></h2>
+<ol class="simple">
+<li>BST 를 Sorted List 형태로 나열한다.</li>
+<li>나열된 List를 Traverse 하면서 인접한 두 값의 차를 구하였을 때 그 최소값이 정답.</li>
+<li><strong>BST 의 In-order Traverse는 Sorted List를 나열하는 효과를 가진다.</strong></li>
+</ol>
+</div>
+<div class="section" id="correct-code">
+<h2>Correct Code<a class="headerlink" href="#correct-code" title="제목 주소">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     TreeNode *left;</span>
+<span class="cm"> *     TreeNode *right;</span>
+<span class="cm"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">minDiff</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">prev</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">inorder</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">){</span><span class="k">return</span><span class="p">;}</span>
+        <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">prev</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span>
+            <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">prev</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">diff</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">){</span><span class="n">diff</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;}</span><span class="k">else</span><span class="p">{</span><span class="n">diff</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">;}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">diff</span> <span class="o">&lt;</span> <span class="n">minDiff</span><span class="p">){</span><span class="n">minDiff</span> <span class="o">=</span> <span class="n">diff</span><span class="p">;}</span>
+            
+        <span class="p">}</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+        
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="nf">getMinimumDifference</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">minDiff</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="0_TwoSum_20190506.html" class="btn btn-neutral float-left" title="Two Sum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Heecheol Yang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
