@@ -15,3 +15,4 @@ Heecheol Yang
     
     0_blog/index.rst
     1_bbb/index.rst
+    2_practice/index.rst
