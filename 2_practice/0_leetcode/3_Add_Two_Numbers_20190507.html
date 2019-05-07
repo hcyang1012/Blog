@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Add Two Numbers &mdash; blog 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../../genindex.html" />
+    <link rel="search" title="검색" href="../../search.html" />
+    <link rel="prev" title="Subtree of Another Tree" href="2_Subtree_of_Another_Tree_20190506.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> blog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_bbb/index.html">Beaglebone Black</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Practice</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Leetcode Practice</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="0_TwoSum_20190506.html">Two Sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="1_Minimum_Absolute_Difference_In_BST_20190506.html">Minimum Absolute Difference in BST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2_Subtree_of_Another_Tree_20190506.html">Subtree of Another Tree</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Add Two Numbers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">문제 목표</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">접근 방식</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#correct-code">Correct Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trick">Trick</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#time-complexity">Time Complexity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Practice</a> &raquo;</li>
+        
+          <li><a href="index.html">Leetcode Practice</a> &raquo;</li>
+        
+      <li>Add Two Numbers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/2_practice/0_leetcode/3_Add_Two_Numbers_20190507.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="add-two-numbers">
+<h1>Add Two Numbers<a class="headerlink" href="#add-two-numbers" title="제목 주소">¶</a></h1>
+<p>문제 링크 :  <a class="reference external" href="https://leetcode.com/problems/add-two-numbers/">Link</a></p>
+<div class="section" id="id1">
+<h2>문제 목표<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<p>List 형태로 표현된 두 수의 합을 구하여라.</p>
+</div>
+<div class="section" id="id2">
+<h2>접근 방식<a class="headerlink" href="#id2" title="제목 주소">¶</a></h2>
+<ol class="simple">
+<li>두 List를 한 자리씩 더한다.</li>
+</ol>
+<ul class="simple">
+<li>(여기서 계산되는 합) = (두 List의 값의 합) + Carry 이 된다.</li>
+</ul>
+<ol class="simple">
+<li>계산된 값을 담기 위해 새 List Node를 만든다.</li>
+</ol>
+<ul class="simple">
+<li>(새로 만들어진 List Node 의 값) = (합 % 10) 이다.</li>
+<li>(합 / 10) 값은 Carry가 된다.</li>
+</ul>
+<ol class="simple">
+<li>모든 자리수를 더할 때 까지 List를 계속 탐색하되, 어느 한 쪽이 먼저 자리수가 끝난다면 자리수가 끝난 쪽은 항상 0을 더하게 한다.</li>
+<li>모든 List Node에 대해 덧셈을 수행한 후 Carry가 남아 있다면 새 List를 만든 후 Carry를 더한다.</li>
+</ol>
+</div>
+<div class="section" id="correct-code">
+<h2>Correct Code<a class="headerlink" href="#correct-code" title="제목 주소">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     ListNode *next;</span>
+<span class="cm"> *     ListNode(int x) : val(x), next(NULL) {}</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">ListNode</span><span class="o">*</span> <span class="n">addTwoNumbers</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span> <span class="n">l1</span><span class="p">,</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">l2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ListNode</span> <span class="o">*</span><span class="n">newList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">ListNode</span> <span class="o">*</span><span class="n">result</span> <span class="o">=</span> <span class="n">newList</span><span class="p">;</span>
+        <span class="n">ListNode</span> <span class="o">*</span><span class="n">currentL1</span> <span class="o">=</span> <span class="n">l1</span><span class="p">;</span>
+        <span class="n">ListNode</span> <span class="o">*</span><span class="n">currentL2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">;</span>
+        
+        <span class="kt">int</span> <span class="n">carry</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">((</span><span class="n">currentL1</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">currentL2</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)){</span>
+            <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">currentL1</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">currentL1</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">currentL2</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">currentL2</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+            <span class="p">}</span>
+            
+            <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">carry</span><span class="p">;</span>
+            <span class="n">carry</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+            <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+            
+            <span class="n">newList</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+            <span class="n">newList</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">sum</span><span class="p">;</span>
+            <span class="n">newList</span> <span class="o">=</span> <span class="n">newList</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            
+                      
+            <span class="k">if</span><span class="p">(</span><span class="n">currentL1</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span>
+                <span class="n">currentL1</span> <span class="o">=</span> <span class="n">currentL1</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">currentL2</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span>
+                <span class="n">currentL2</span> <span class="o">=</span> <span class="n">currentL2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">carry</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">newList</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+            <span class="n">newList</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">carry</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="trick">
+<h2>Trick<a class="headerlink" href="#trick" title="제목 주소">¶</a></h2>
+<p>위 코드에서는 코드 단순함을 위해 result의 첫 Node는 Dummy로 사용될뿐 결과적으로는 사용하지 않는다. 즉 마지막 return 시 result-&gt;next를 리턴함으로써 메모리가 약간 낭비되는 대신 코드의 간결함을 취하였다.</p>
+</div>
+<div class="section" id="time-complexity">
+<h2>Time Complexity<a class="headerlink" href="#time-complexity" title="제목 주소">¶</a></h2>
+<p>두 List 의 길이를 각각 M,N이라고 할 때 O(MAX(M,N))이 된다.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="2_Subtree_of_Another_Tree_20190506.html" class="btn btn-neutral float-left" title="Subtree of Another Tree" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Heecheol Yang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
