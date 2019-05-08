@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Longest Palindromic Substring &mdash; blog 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../../genindex.html" />
+    <link rel="search" title="검색" href="../../search.html" />
+    <link rel="prev" title="Longest Substring Without Repeating Characters" href="4_Longest_Substring_Without_Repeating_Characters_20190507.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> blog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_bbb/index.html">Beaglebone Black</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Practice</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Leetcode Practice</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="0_TwoSum_20190506.html">Two Sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="1_Minimum_Absolute_Difference_In_BST_20190506.html">Minimum Absolute Difference in BST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2_Subtree_of_Another_Tree_20190506.html">Subtree of Another Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3_Add_Two_Numbers_20190507.html">Add Two Numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="4_Longest_Substring_Without_Repeating_Characters_20190507.html">Longest Substring Without Repeating Characters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Longest Palindromic Substring</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">문제 목표</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">접근 방식</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#correct-code">Correct Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#time-complexity">Time Complexity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Practice</a> &raquo;</li>
+        
+          <li><a href="index.html">Leetcode Practice</a> &raquo;</li>
+        
+      <li>Longest Palindromic Substring</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/2_practice/0_leetcode/5_Longest_Palindromic_Substring.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="longest-palindromic-substring">
+<h1>Longest Palindromic Substring<a class="headerlink" href="#longest-palindromic-substring" title="제목 주소">¶</a></h1>
+<div class="section" id="id1">
+<h2>문제 목표<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<div class="section" id="palindrom-string">
+<h3>Palindrom String<a class="headerlink" href="#palindrom-string" title="제목 주소">¶</a></h3>
+<p>좌-&gt;우, 우-&gt;좌 어느 방향으로 읽어도 같은 문자열</p>
+<ul class="simple">
+<li>예) aabaa</li>
+</ul>
+<p>주어진 문자열 <em>s</em> 내에 가장 긴 Palindrom substring을 찾아라.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>접근 방식<a class="headerlink" href="#id2" title="제목 주소">¶</a></h2>
+<div class="section" id="expand">
+<h3>Expand<a class="headerlink" href="#expand" title="제목 주소">¶</a></h3>
+<p>문자열 <em>s</em> 내 어느 한 문자를 중심으로 좌우 글자가 달라 질 때 까지 문자열을 좌우로 확장시킨다.</p>
+<ul class="simple">
+<li>예) cabac, b에서 expand 한다고 할 때,<ul>
+<li>b</li>
+<li>aba</li>
+<li>cabac</li>
+</ul>
+</li>
+</ul>
+<p>Palindrom String의 길이는 짝수, 홀수 모두 가능하기 때문에 Expand는 두 경우 모두를 고려해서 수행해야 한다.</p>
+</div>
+<div class="section" id="id3">
+<h3>알고리즘<a class="headerlink" href="#id3" title="제목 주소">¶</a></h3>
+<ol class="simple">
+<li><em>s</em>의 길이가 2 미만이면 <em>s</em>를 리턴한다. (문자열 <em>s</em> 자체가 Palindrom)</li>
+<li>각 <em>i</em>에 대해 다음을 수행한다. (<em>i</em> 는 <em>[0,len(s)-1]</em> 범위의 정수)</li>
+</ol>
+<ul class="simple">
+<li>Expand(s,i,i) //홀수 길이의 Palndrom 계산</li>
+<li>Expand(s,i,i+1) //홀수 길이의 Palndrom 계산</li>
+<li>각 Expand 수행 시 마다 가장 긴 길이의 Palindrom 을 찾아 기억한다.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="correct-code">
+<h2>Correct Code<a class="headerlink" href="#correct-code" title="제목 주소">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">maxLen</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">strStart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">expand</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">leftStart</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">rightStart</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">leftStart</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">rightStart</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">left</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">==</span> <span class="n">s</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">right</span><span class="p">)){</span>
+            <span class="n">left</span><span class="o">--</span><span class="p">;</span>
+            <span class="n">right</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">maxLen</span> <span class="o">&lt;=</span> <span class="n">len</span><span class="p">){</span>
+            <span class="n">maxLen</span> <span class="o">=</span> <span class="n">len</span><span class="p">;</span>
+            <span class="n">strStart</span> <span class="o">=</span> <span class="n">left</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">string</span> <span class="nf">longestPalindrome</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">){</span>
+            <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">expand</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+            <span class="n">expand</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">s</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">strStart</span><span class="p">,</span><span class="n">maxLen</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="time-complexity">
+<h2>Time Complexity<a class="headerlink" href="#time-complexity" title="제목 주소">¶</a></h2>
+<p>Expand의 가 O(N)의 Time Complexity를 가지고, 문자열 길이만큼 Expand함수가 수행되므로 O(N^2) 의 Time Complexity를 가진다.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="4_Longest_Substring_Without_Repeating_Characters_20190507.html" class="btn btn-neutral float-left" title="Longest Substring Without Repeating Characters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Heecheol Yang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
