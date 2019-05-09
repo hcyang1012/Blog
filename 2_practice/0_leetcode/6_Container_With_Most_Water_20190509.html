@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Container With Most Water &mdash; blog 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../../genindex.html" />
+    <link rel="search" title="검색" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> blog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_bbb/index.html">Beaglebone Black</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Practice</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Container With Most Water</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/2_practice/0_leetcode/6_Container_With_Most_Water_20190509.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="container-with-most-water">
+<h1>Container With Most Water<a class="headerlink" href="#container-with-most-water" title="제목 주소">¶</a></h1>
+<p>문제 링크 :  <a class="reference external" href="https://leetcode.com/problems/container-with-most-water/">Link</a></p>
+<div class="section" id="id1">
+<h2>문제 목표<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<p>수평선에 여러 개의 막대를 세운 후 그 중 두개의 막대를 선택하여 만든 컨테이너들 중 가장 크기가 큰 컨테이너의 크기를 구해라.</p>
+</div>
+<div class="section" id="id2">
+<h2>접근 방식<a class="headerlink" href="#id2" title="제목 주소">¶</a></h2>
+<div class="section" id="brute-force">
+<h3>Brute Force<a class="headerlink" href="#brute-force" title="제목 주소">¶</a></h3>
+<p>간단하니 아래 코드 참조 : O(N^2)의 Time Complexity를 가진다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">maxArea</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">height</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">maxWater</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">height</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">height</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+                <span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="p">;</span>
+                <span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">height</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">height</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">j</span><span class="p">));</span>
+                <span class="kt">int</span> <span class="n">water</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">maxWater</span> <span class="o">&lt;=</span> <span class="n">water</span><span class="p">){</span>
+                    <span class="n">maxWater</span> <span class="o">=</span> <span class="n">water</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">maxWater</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="greedy-approach">
+<h3>Greedy Approach<a class="headerlink" href="#greedy-approach" title="제목 주소">¶</a></h3>
+<ol class="simple">
+<li>제일 바깥의 두 막대를 선택한다. (left,right)</li>
+<li>두 막대 중 왼쪽 막대의 길이가 짧거나 같은 경우 left++</li>
+<li>두 막대 중 오른쪽 막대의 길이가 길면 right--</li>
+<li>left 와 right가 만날때까지 1~3을 반복한다.</li>
+<li>1~3을 반복하면서 매 번 컨테이너의 크기를 게산하되, 그 중 가잔 큰 컨테이너의 크기를 리턴한다.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="제목 주소">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">maxArea</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">height</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">maxWater</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">height</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">){</span>
+            <span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">height</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">left</span><span class="p">),</span><span class="n">height</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">right</span><span class="p">));</span>
+            <span class="kt">int</span> <span class="n">water</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">water</span> <span class="o">&gt;=</span> <span class="n">maxWater</span><span class="p">){</span>
+                <span class="n">maxWater</span> <span class="o">=</span> <span class="n">water</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">height</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">right</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">height</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">left</span><span class="p">)){</span>
+                <span class="n">right</span><span class="o">--</span><span class="p">;</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="n">left</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">maxWater</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Heecheol Yang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

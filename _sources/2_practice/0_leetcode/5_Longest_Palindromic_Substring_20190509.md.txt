@@ -1,5 +1,7 @@
 # Longest Palindromic Substring
 
+문제 링크 :  [Link](https://leetcode.com/problems/longest-palindromic-substring/)
+
 ## 문제 목표
 ### Palindrom String
 좌->우, 우->좌 어느 방향으로 읽어도 같은 문자열
