@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Remove Nth Node From End of List &mdash; blog 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../../genindex.html" />
+    <link rel="search" title="검색" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> blog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_bbb/index.html">Beaglebone Black</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Practice</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Remove Nth Node From End of List</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/2_practice/0_leetcode/9_Removed_Nthd_Noded_Fromd_End_of_List_20190512.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="remove-nth-node-from-end-of-list">
+<h1>Remove Nth Node From End of List<a class="headerlink" href="#remove-nth-node-from-end-of-list" title="제목 주소">¶</a></h1>
+<p>문제 링크 :  <a class="reference external" href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">Link</a></p>
+<div class="section" id="id1">
+<h2>문제 목표<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<p>주어진 Singly Linked List의 끝에서 N번째 Node를 제거한 결과를 찾아내라.</p>
+</div>
+<div class="section" id="id2">
+<h2>문제 접근 방식<a class="headerlink" href="#id2" title="제목 주소">¶</a></h2>
+<p>List의 길이를 알아내야 하기 때문에 전체 List는 훑어야 한다.
+다만, 끝에서 N번째 Node를 찾기 위해서는 다음과 같은 방식으로 가능하다.</p>
+<ol class="simple">
+<li>Head 에서 N 번 만큼 List를 훑는다. (CurrentNode = CurrentNode-&gt;next)</li>
+<li>N 번 훑은 후 Head를 TargetNode로 정한다.</li>
+<li>CurrentNode가 List의 끝에 도달할 때 까지 TargetNode와 CurrentNode를 전진시킨다.</li>
+<li>CurrentNode가 Head에 도달하면 TargetNode가 제거 대상 Node이다.</li>
+</ol>
+</div>
+<div class="section" id="correct-code">
+<h2>Correct Code<a class="headerlink" href="#correct-code" title="제목 주소">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>    <span class="n">ListNode</span><span class="o">*</span> <span class="nf">removeNthFromEnd</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        
+        <span class="n">ListNode</span> <span class="o">*</span><span class="n">prevNode</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="n">ListNode</span> <span class="o">*</span><span class="n">currentNode</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+        <span class="n">ListNode</span> <span class="o">*</span><span class="n">targetNode</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        
+        <span class="k">while</span><span class="p">(</span><span class="n">end</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">){</span>
+            <span class="n">currentNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="n">end</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">targetNode</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">currentNode</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span>
+            <span class="n">prevNode</span> <span class="o">=</span> <span class="n">targetNode</span><span class="p">;</span>
+            <span class="n">currentNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="n">targetNode</span> <span class="o">=</span> <span class="n">targetNode</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>            
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">head</span> <span class="o">==</span> <span class="n">targetNode</span><span class="p">){</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">targetNode</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="n">prevNode</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">targetNode</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="n">head</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="time-complexity">
+<h2>Time Complexity<a class="headerlink" href="#time-complexity" title="제목 주소">¶</a></h2>
+<p>List를 한 번만 훑으면 되끼 때문에 O(N)의 Time Complexity를 가진다.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Heecheol Yang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
