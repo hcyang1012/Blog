@@ -14,3 +14,4 @@ Leetcode Practice
 	./6_Container_With_Most_Water_20190509.md
 	./7_3sum_20190512.md
 	./8_Letter_Combinations_of_a_Phone_Number_20190512.md
+	./9_Removed_Nthd_Noded_Fromd_End_of_List_20190512.md
