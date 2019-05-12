@@ -10,5 +10,6 @@ Leetcode Practice
 	./2_Subtree_of_Another_Tree_20190506.md
 	./3_Add_Two_Numbers_20190507.md
 	./4_Longest_Substring_Without_Repeating_Characters_20190507.md
-	./5_Longest_Palindromic_Substring.md
-	./6_Container_With_Most_Water.md
+	./5_Longest_Palindromic_Substring_20190509.md
+	./6_Container_With_Most_Water_20190509.md
+	./7_3sum_20190512.md
