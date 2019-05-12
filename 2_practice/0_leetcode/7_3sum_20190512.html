@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3 Sum &mdash; blog 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../../genindex.html" />
+    <link rel="search" title="검색" href="../../search.html" />
+    <link rel="prev" title="Container With Most Water" href="6_Container_With_Most_Water_20190509.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> blog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_bbb/index.html">Beaglebone Black</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Practice</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Leetcode Practice</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="0_TwoSum_20190506.html">Two Sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="1_Minimum_Absolute_Difference_In_BST_20190506.html">Minimum Absolute Difference in BST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2_Subtree_of_Another_Tree_20190506.html">Subtree of Another Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3_Add_Two_Numbers_20190507.html">Add Two Numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="4_Longest_Substring_Without_Repeating_Characters_20190507.html">Longest Substring Without Repeating Characters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_Longest_Palindromic_Substring_20190509.html">Longest Palindromic Substring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="6_Container_With_Most_Water_20190509.html">Container With Most Water</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3 Sum</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">문제 목표</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">문제 접근 방식</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#correct-code">Correct Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Practice</a> &raquo;</li>
+        
+          <li><a href="index.html">Leetcode Practice</a> &raquo;</li>
+        
+      <li>3 Sum</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/2_practice/0_leetcode/7_3sum_20190512.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sum">
+<h1>3 Sum<a class="headerlink" href="#sum" title="제목 주소">¶</a></h1>
+<p>문제 링크 :  <a class="reference external" href="https://leetcode.com/problems/3sum/">Link</a></p>
+<div class="section" id="id1">
+<h2>문제 목표<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<p>N 개의 정수로 이루어 진 배열에서 임의의 세 수를 뽑았을 때 세 수의 합이 0이 되는 모든 경우를 구하여라. 단, 중복이 있어서는 안 된다.</p>
+</div>
+<div class="section" id="id2">
+<h2>문제 접근 방식<a class="headerlink" href="#id2" title="제목 주소">¶</a></h2>
+<p>모든 경우의 수를 <em>중복 없이</em> 구하여야 하기 때문에 배열 전체를 읽어야 하는 것은 어쩔 수 없다. 그러나 주어진 배열을 <strong>정렬</strong>하면 좀 더 쉽게 중복을 제거 할 수 있다. 자세한 방법은 그림으로 확인해 보자.</p>
+<p><img alt="https://docs.google.com/drawings/d/e/2PACX-1vTaKSvftUvYi0pRHpubswoIE3cwoAFCY2AIeyjv_7G0g7eTkdlWK6JmbQP996lSxQnGr-5QoJODZnrr/pub?w=1401&amp;h=3023" src="https://docs.google.com/drawings/d/e/2PACX-1vTaKSvftUvYi0pRHpubswoIE3cwoAFCY2AIeyjv_7G0g7eTkdlWK6JmbQP996lSxQnGr-5QoJODZnrr/pub?w=1401&amp;h=3023" /></p>
+</div>
+<div class="section" id="correct-code">
+<h2>Correct Code<a class="headerlink" href="#correct-code" title="제목 주소">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">threeSum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">result</span><span class="p">;</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">nums</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>        
+        
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">low</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">high</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">target</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="p">;</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">){</span>
+                <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">low</span><span class="p">);</span>
+                <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">high</span><span class="p">);</span>
+                <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">sum</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">){</span>
+                    <span class="n">low</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="n">target</span><span class="p">){</span>
+                    <span class="n">high</span><span class="o">--</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">else</span><span class="p">{</span>
+                    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">temp</span><span class="p">;</span>
+                    <span class="n">temp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+                    <span class="n">temp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+                    <span class="n">temp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+                    <span class="n">result</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+                    
+                    <span class="k">while</span><span class="p">(</span><span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="o">==</span> <span class="n">nums</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">low</span><span class="p">))</span> <span class="n">low</span><span class="o">++</span><span class="p">;</span>
+                    <span class="k">while</span><span class="p">(</span><span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span> <span class="o">&amp;&amp;</span> <span class="n">c</span> <span class="o">==</span> <span class="n">nums</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">high</span><span class="p">))</span> <span class="n">high</span><span class="o">--</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="n">nums</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+                          
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="section" id="time-complexity">
+<h3>Time Complexity<a class="headerlink" href="#time-complexity" title="제목 주소">¶</a></h3>
+<ul class="simple">
+<li>정렬 : 보통 O(nlgN) 시간 소요</li>
+<li>Loop : O(N^2) 소요됨 (2중 루프)</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="6_Container_With_Most_Water_20190509.html" class="btn btn-neutral float-left" title="Container With Most Water" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Heecheol Yang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

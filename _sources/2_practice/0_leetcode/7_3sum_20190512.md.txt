@@ -1,0 +1,61 @@
+# 3 Sum
+
+문제 링크 :  [Link](https://leetcode.com/problems/3sum/)
+
+## 문제 목표
+N 개의 정수로 이루어 진 배열에서 임의의 세 수를 뽑았을 때 세 수의 합이 0이 되는 모든 경우를 구하여라. 단, 중복이 있어서는 안 된다.
+
+## 문제 접근 방식
+
+모든 경우의 수를 *중복 없이* 구하여야 하기 때문에 배열 전체를 읽어야 하는 것은 어쩔 수 없다. 그러나 주어진 배열을 **정렬**하면 좀 더 쉽게 중복을 제거 할 수 있다. 자세한 방법은 그림으로 확인해 보자.
+
+
+![](https://docs.google.com/drawings/d/e/2PACX-1vTaKSvftUvYi0pRHpubswoIE3cwoAFCY2AIeyjv_7G0g7eTkdlWK6JmbQP996lSxQnGr-5QoJODZnrr/pub?w=1401&h=3023)
+
+
+## Correct Code
+```cpp
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> result;
+
+        std::sort(nums.begin(), nums.end());        
+        
+        for(int i = 0 ; i < nums.size() ; i++){
+            int a = nums.at(i);
+            int low = i + 1;
+            int high = nums.size() - 1;
+            int target = -a;
+            while(low < high){
+                int b = nums.at(low);
+                int c = nums.at(high);
+                int sum = b + c;
+                if(sum < target){
+                    low++;
+                }else if (sum > target){
+                    high--;
+                }
+                else{
+                    vector<int> temp;
+                    temp.push_back(a);
+                    temp.push_back(b);
+                    temp.push_back(c);
+                    result.push_back(temp);
+                    
+                    while(low < high && b == nums.at(low)) low++;
+                    while(low < high && c == nums.at(high)) high--;
+                }
+            }
+            while(i < nums.size() - 1 && nums.at(i) == nums.at(i+1)) i++;
+        }
+                          
+        return result;
+    }
+};
+```
+
+### Time Complexity
+
+- 정렬 : 보통 O(nlgN) 시간 소요
+- Loop : O(N^2) 소요됨 (2중 루프)
