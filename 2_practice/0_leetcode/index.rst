@@ -13,4 +13,4 @@ Leetcode Practice
 	./5_Longest_Palindromic_Substring_20190509.md
 	./6_Container_With_Most_Water_20190509.md
 	./7_3sum_20190512.md
-	./8_Letter_Combinations_of_a_Phone_Number_20190509.md
+	./8_Letter_Combinations_of_a_Phone_Number_20190512.md
