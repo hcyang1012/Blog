@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FBTFT with Beaglebone Black &mdash; blog 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../../genindex.html" />
+    <link rel="search" title="검색" href="../../search.html" />
+    <link rel="next" title="Practice" href="../../2_practice/index.html" />
+    <link rel="prev" title="Introduction" href="0_Introduction_20190505.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> blog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Beaglebone Black</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">BBB SPI Howto</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="0_Introduction_20190505.html">Introduction</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">FBTFT with Beaglebone Black</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">준비물</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">설정이 필요한 것들</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#h-w">H/W 연결</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device-tree">Device Tree 편집</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fbtft">FBTFT 설정</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_practice/index.html">Practice</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Beaglebone Black</a> &raquo;</li>
+        
+          <li><a href="index.html">BBB SPI Howto</a> &raquo;</li>
+        
+      <li>FBTFT with Beaglebone Black</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/1_bbb/0_SPI_HOWTO/1_FBTFT_with_BBB_20190521.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fbtft-with-beaglebone-black">
+<h1>FBTFT with Beaglebone Black<a class="headerlink" href="#fbtft-with-beaglebone-black" title="제목 주소">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="제목 주소">¶</a></h2>
+<p>이 문서에서는 Beaglebone Black에 SPI 기반으로 동작하는 TFT LCD를 연동하는 예제를 기술하고자 한다.</p>
+<p>이를 위해 먼저 시스템이 구성하기 위해서는 어떠한 것들이 필요한지 알아보고, 각 요소들을 설정하여 LCD 사용하기 위한 환경을 구성해 볼 것이다.</p>
+<p>또한 LCD 를 사용할 수 있는 환경이 구성된 후 이를 이용해 몇 가지 예제를 동작시켜 볼 것이다.</p>
+</div>
+<div class="section" id="id1">
+<h2>준비물<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<ul class="simple">
+<li>Beaglebone Black</li>
+<li><a class="reference external" href="https://makeradvisor.com/tools/1-8-tft-lcd-display/">ST7735R 기반 TFT LCD</a></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>설정이 필요한 것들<a class="headerlink" href="#id2" title="제목 주소">¶</a></h2>
+<p>아래 그림은 본 예제가 동작하기 위해 필요한 HW / SW 기능들을 간단히 그려본 그림이다. 이 그림들을 하나 하나 뜯어보면 무엇을 설정해 주어야 하는지 알 수 있다.</p>
+<p><img alt="https://docs.google.com/drawings/d/e/2PACX-1vSvMJXwJW91CauYh9FlOITSDYTx4txl8zM7xj_AoebzpFBgKsREDzvu1wRZy_DnW2e3E4O6C6trHOa6/pub?w=1383&amp;h=1334" src="https://docs.google.com/drawings/d/e/2PACX-1vSvMJXwJW91CauYh9FlOITSDYTx4txl8zM7xj_AoebzpFBgKsREDzvu1wRZy_DnW2e3E4O6C6trHOa6/pub?w=1383&amp;h=1334" /></p>
+<div class="section" id="tft-lcd-bbb">
+<h3>TFT LCD와 BBB의 연결<a class="headerlink" href="#tft-lcd-bbb" title="제목 주소">¶</a></h3>
+<p>그림 맨 아래에는 BBB와 TFT LCD가 SPI와 GPIO 두 가지 채널로 연결되어 있음을 알 수 있다. 핀맵에 맞추어 도선을 연결해 주면 된다. 구체적인 핀맵은 잠시 후에 알아보자.</p>
+</div>
+<div class="section" id="spi-gpio">
+<h3>SPI / GPIO 설정<a class="headerlink" href="#spi-gpio" title="제목 주소">¶</a></h3>
+<p>BBB에 장착되어 있는 SOC인 AM335x는 SPI와 GPIO Peripheral 을 모두 제공한다. 그러나 이 장치들을 제대로 사용해 주기 위해서는 몇 가지 설정을 해 주어야 한다. 이 예제에서 해 주어야 하는 것들은 다음과 같은 것들이 있다.</p>
+<ol class="simple">
+<li>PINMUX :
+대부분의 SOC의 외부로 나와 있는 핀은 특정 장치와 1:1로 연결되어 있는 것이 아니라 여러 가지 내부 장치들과 연결되어 있다. 따라서 내가 사용하고자 하는 핀의 목적에 따라 그 핀을 어떤 장치와 연결시킬 지 설정해 주어야 한다. ARM 리눅스 기반 시스템에서는 Device Tree의 PINMUX Section을 통해 이를 설정 할 수 있다.</li>
+<li>Device Driver Enable :
+리눅스에서는 부팅시간이나 커널이 사용하는 메모리 사용량을 최소화하기 위해 시스템이 동작하기 위한 최소한의 기능들만 부팅 시에 동작시킨다. 예를 들어, SPI 디바이스 드라이버나 GPIO 디바이스 드라이버가 만들고자 하는 시스템에 필요 없다면 굳이 처음부터 동작시킬 필요는 없을 것이다. 하지만 이번 예제에서는 SPI 및 GPIO 가 필요하기 때문에 이 두 가지 장치에 대한 디바이스 드라이버를 활성화 시킬 필요가 있다. 이 역시 Device Tree의 <em>status</em> 속성을 통해 설정 가능하다.(단, BBB가 사용하는 Device Tree에서는 GPIO는 기본값으로 활성화 상태가 설정되어 있기 있기 때문에 SPI 디바이스 드라이버만 활성화 시켜 주면 된다.)</li>
+</ol>
+</div>
+<div class="section" id="subsystem">
+<h3>Subsystem 사용<a class="headerlink" href="#subsystem" title="제목 주소">¶</a></h3>
+<p>리눅스에서는 각 장치에 대한 Device Driver에 직접 접근해서 장치를 사용하는 것 보다는 Device Driver와 연결되어 있는 Subsystem이 제공하는 API를 통해서 접근하는 것을 권장하고 있다. 이미 AM335x용 Device Driver는 각 Subsystem들과 연동이 잘 되도록 구현되어 있으니 우리는 특별히 신경을 쓸 필요는 없다.</p>
+</div>
+<div class="section" id="lcd-device-driver">
+<h3>LCD Device Driver<a class="headerlink" href="#lcd-device-driver" title="제목 주소">¶</a></h3>
+<p>LCD Controller도 결국 하나의 장치이기 때문에 이를 위한 Device Driver가 필요하다. 당연하겠지만 이 Device Driver가 SPI와 GPIO Subsystem 을 이용하여 LCD를 제어하는 구조이기 때문에 개발자는 SPI / GPIO 설정을 LCD Device Driver에게 알려 주기만 하면 될 뿐, 이를 사용하는 User Application은 SPI와 GPIO에 직접 접근할 필요가 없다. 여기서는 FBTFT라는 Device Driver를 이용할 것이다. 이 Device Driver는 SPI 기반으로 동작하는 여러 종류의 LCD Controller를 지원하며, 이 때문에 Controller의 이름과 SPI Subsystem 및 GPIO Subsystem에 접근하기 위한 SPI 채널 및 GPIO Name만 알려주면 쉽게 TFT LCD의 사용이 가능하게 해 준다.</p>
+</div>
+<div class="section" id="user-application">
+<h3>User Application<a class="headerlink" href="#user-application" title="제목 주소">¶</a></h3>
+<p>Kernel Level에서 LCD 용 Device Driver가 동작하게 하였더라도 Device Driver가 제공하는 인터페이스를 알아야 User Application이 LCD를 사용할 수 있을 것이다.LCD 접근하기 위한 가장 대표적인 LCD Interface가 <em>/dev/fbx</em>로 표현되는 Frame Buffer interface를 이용하는 것으로, FBTFT 역시 이를 지원한다. 이번 예제에서는 이룰 통해 간단히 TFT LCD에 Random Dots를 출력해 볼 것이다.</p>
+</div>
+</div>
+<div class="section" id="h-w">
+<h2>H/W 연결<a class="headerlink" href="#h-w" title="제목 주소">¶</a></h2>
+<p>아래 표와 같이 연결해 주자</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">LCD</th>
+<th align="center">BBB_NAME</th>
+<th align="center">BBB_PIN#</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">LED</td>
+<td align="center">3.3V</td>
+<td align="center">P9_03</td>
+</tr>
+<tr>
+<td align="center">SCK</td>
+<td align="center">SCLK</td>
+<td align="center">P9_22</td>
+</tr>
+<tr>
+<td align="center">SDA</td>
+<td align="center">MOSI</td>
+<td align="center">P9_18</td>
+</tr>
+<tr>
+<td align="center">A0</td>
+<td align="center">GPIO1_28</td>
+<td align="center">P9_12</td>
+</tr>
+<tr>
+<td align="center">RESET</td>
+<td align="center">GPIO1_16</td>
+<td align="center">P9_15</td>
+</tr>
+<tr>
+<td align="center">CS</td>
+<td align="center">CS</td>
+<td align="center">P9_17</td>
+</tr>
+<tr>
+<td align="center">GND</td>
+<td align="center">GND</td>
+<td align="center">P9_01</td>
+</tr>
+<tr>
+<td align="center">VCC</td>
+<td align="center">5V</td>
+<td align="center">P9_05</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="device-tree">
+<h2>Device Tree 편집<a class="headerlink" href="#device-tree" title="제목 주소">¶</a></h2>
+<p>요즘은 Device Tree 편집이 필요할 시 Device Tree Overlay를 많이 사용하는데, 개인적으로는 좋아하는 방식이 아니라 부팅 시 읽어들이는 Device Tree에 직접 편집해 넣었다. (arch/arm/boot/dts/am335x-boneblack.dts)</p>
+<p>Device Tree를 빌드하고 적용하는 예제는 <a class="reference external" href="https://www.digikey.com/eewiki/display/linuxonarm/BeagleBone+Black">이 링크</a> 를 참조하자.</p>
+<div class="section" id="pin-mux-for-spi0">
+<h3>PIN MUX for SPI0<a class="headerlink" href="#pin-mux-for-spi0" title="제목 주소">¶</a></h3>
+<p>이번 예제에서는 SPI 0를 사용했다.</p>
+<blockquote>
+<div>참고 : Beaglebone Black는 HDMI 사용을 위해 SPI1를 미리 예약해 두고 있다. SPI1 을 사용하려면 HDMI 기능도 함께 제거 후 사용해야 한다. 여기서는 그냥 SPI0를 사용하였다.</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spi0_pins</span><span class="p">:</span><span class="n">spi0_pins</span><span class="p">{</span>
+	<span class="n">pinctrl</span><span class="o">-</span><span class="n">single</span><span class="p">,</span><span class="n">pins</span> <span class="o">=</span> <span class="o">&lt;</span>
+		<span class="n">AM33XX_IOPAD</span><span class="p">(</span><span class="mh">0x95c</span><span class="p">,</span> <span class="n">PIN_OUTPUT_PULLUP</span> <span class="o">|</span> <span class="n">MUX_MODE0</span><span class="p">)</span>			<span class="o">/*</span> <span class="n">P9_17</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="n">SPI0_CS0</span> <span class="o">*/</span>
+		<span class="n">AM33XX_IOPAD</span><span class="p">(</span><span class="mh">0x950</span><span class="p">,</span> <span class="n">PIN_INPUT_PULLUP</span> <span class="o">|</span> <span class="n">MUX_MODE0</span><span class="p">)</span>			<span class="o">/*</span> <span class="n">P9_22</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="n">SPI0_CLK</span> <span class="o">*/</span>
+		<span class="n">AM33XX_IOPAD</span><span class="p">(</span><span class="mh">0x954</span><span class="p">,</span> <span class="n">PIN_INPUT_PULLUP</span> <span class="o">|</span> <span class="n">MUX_MODE0</span><span class="p">)</span>       	<span class="o">/*</span> <span class="n">P9_21</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="n">SPI0_MISO</span> <span class="o">*/</span>
+		<span class="n">AM33XX_IOPAD</span><span class="p">(</span><span class="mh">0x958</span><span class="p">,</span> <span class="n">PIN_OUTPUT_PULLUP</span> <span class="o">|</span> <span class="n">MUX_MODE0</span><span class="p">)</span>	        <span class="o">/*</span> <span class="n">P9_18</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="n">SPI0_MOSI</span> <span class="o">*/</span>
+	<span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Beaglebone Black의 Pin 들 중 SPI를 위한 핀 4 개를 SPI 용으로 설정해 주어야 한다. BBB의 AP인 AM335x 의 PINMUX 설정은 AM335x Reference Manual 을 보아야 하지만, 이에 대한 자세한 설명은 이 글의 범위를 벗어난다.</p>
+<p>다만 BBB에서 사용하는 PIN들에 대한 PINMUX는 <a class="reference external" href="https://itbrainpower.net/a-gsm/images/BeagleboneBlackP9HeaderTable.pdf">이 문서</a> 에 잘 표현되어 있다. 위 Device Tree 코드와 문서를 비교하면 쉽게 어떠한 설정을 하였는지 알 수 있을 것이다.</p>
+</div>
+<div class="section" id="spi-enable">
+<h3>SPI Enable<a class="headerlink" href="#spi-enable" title="제목 주소">¶</a></h3>
+<p>SPI는 간단하다. SPI를 그냥 Enable 시켜주면 된다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">spi0</span> <span class="p">{</span>
+	<span class="n">status</span><span class="o">=</span><span class="s2">&quot;okay&quot;</span><span class="p">;</span>
+	<span class="n">pinctrl</span><span class="o">-</span><span class="n">names</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">;</span>
+	<span class="n">pinctrl</span><span class="o">-</span><span class="mi">0</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">spi0_pins</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>완전한 소스코드는 <a class="reference external" href="https://gist.github.com/hcyang1012/2e13e6b16bc475f0b449fa141225508a">이 링크</a>를 참조하자.</p>
+</div>
+</div>
+<div class="section" id="fbtft">
+<h2>FBTFT 설정<a class="headerlink" href="#fbtft" title="제목 주소">¶</a></h2>
+<p>이 문서에서 사용하는 LCD는 ST7735R 이라는 LCD 컨트롤러에 의해 제어되며, ST7735R 컨트롤러는 SPI로 제어가 가능하다. 따라서 SPI로 ST7735R을 제어하는 Device Driver가 필요한데, <a class="reference external" href="https://github.com/notro/fbtft">FBTFT</a> 라는 프로젝트에서 이 드라이버를 제공한다.</p>
+<div class="section" id="id3">
+<h3>드라이버 로드<a class="headerlink" href="#id3" title="제목 주소">¶</a></h3>
+<p>BBB에서 사용하는 리눅스 커널은 이 드라이버가 기본으로 포함되어 빌드되기 때문에 따로 커널이나 모듈을 빌드해야 할 필요는 없다. 다음과 같이 모듈을 로드해 보자</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="o">)</span> sudo modprobe fbtft_device <span class="nv">busnum</span><span class="o">=</span><span class="m">1</span> <span class="nv">name</span><span class="o">=</span>adafruit18 <span class="nv">debug</span><span class="o">=</span><span class="m">7</span> <span class="nv">verbose</span><span class="o">=</span><span class="m">3</span> <span class="nv">gpios</span><span class="o">=</span>dc:60,reset:48
+</pre></div>
+</div>
+<p>명령을 보면 fbtft_device라는 모듈을 로드하면서 몇 가지 파라메터를 주는 것을 알 수 있다. 주요 항목들에 대한 설명은 다음과 같다.</p>
+<ol class="simple">
+<li>busnum = 1 : SPI 0 버스를 사용할 것이다. (AM335x는 SPI0 / SPI1 두 개의 SPI 장치를 가지고 있으나, Linux SPI Subsystem에서는 이를 각각 SPI1 / SPI2에 매핑하여 사용한다.)</li>
+<li>name=adafruit18 : adafruit18 LCD 는 ST7735R을 사용하는 LCD 보드이다. 이 때문에 우리는 이 장치에 대한 드라이버를 사용할 것이다.</li>
+<li>gpios=dc : 60, reset:48 : GPIO 60 은 GPIO1_28(32*1 + 28 = 60)을, GPIO 48 은 GPIO1_16(32 * 1 + 16 = 48) 을 의미한다. H/W 설정 시 GPIO1_28 및 GPIO1_16을 사용하기로 설정하였기 때문에 이와 같이 FBTFT 드라이버에 어느 GPIO를 어떤 목적으로 사용할 지 알려주었다.</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h3>드라이버 테스트<a class="headerlink" href="#id4" title="제목 주소">¶</a></h3>
+<p>정상적으로 드라이버가 동작하고 있다면 <em>/dev/fb1</em>이라는 파일이 생성되어야 한다.</p>
+<blockquote>
+<div>참고 : /dev/fb0는 BBB의 HDMI Interface가 사용하고 있다.</div></blockquote>
+<p>여기에 다음과 같은 명령을 실행해 보면 LCD에 임의의 위치에 임의의 색깔의 점이 표시되는 것을 확인할 수 있을 것이다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat /dev/urandom /dev/fb1
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>추가 예제<a class="headerlink" href="#id5" title="제목 주소">¶</a></h3>
+<p><a class="reference external" href="https://github.com/notro/fbtft/wiki/Framebuffer-use">FBTFT 위키</a> 에 가 보면 몇 가지 좀 더 해볼 수 있는 예제가 있다. 예를 들어, 다음 예제는 리눅스 콘솔을 LCD로 포워딩(Forwarding) 하는 예제이다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="o">)</span> sudo apt-get install fbset
+<span class="c1"># Map console 1 to framebuffer 1, login screen will show up on the display</span>
+$<span class="o">)</span> con2fbmap <span class="m">1</span> <span class="m">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>부팅 시 자동으로 로드되게 하기<a class="headerlink" href="#id6" title="제목 주소">¶</a></h3>
+<p>아무래도 modprobe 명령을 매 번 입력하기에는 비효율적이다. <em>/etc/modprobe.d</em> 디렉토리에 <em>fbtft.conf</em>파일을 만들어 부팅 시에 자동으로 드라이버를 로드하고 위 옵션들이 적용되게 할 수 있다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#/etc/modprobe.d/fbtft.conf</span>
+options fbtft_device <span class="nv">busnum</span><span class="o">=</span><span class="m">1</span> <span class="nv">name</span><span class="o">=</span>adafruit18 <span class="nv">debug</span><span class="o">=</span><span class="m">7</span> <span class="nv">verbose</span><span class="o">=</span><span class="m">3</span> <span class="nv">gpios</span><span class="o">=</span>dc:60,reset:4 <span class="nv">rotate</span><span class="o">=</span><span class="m">90</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>정리<a class="headerlink" href="#id7" title="제목 주소">¶</a></h3>
+<p>이 문서에서는 Beaglebone Black 에서 작은 TFT LCD를 제어하는 방법에 대해 알아보았다. 사용된 LCD는 ST7735R LCD 컨트롤러를 통해 제어가 가능하고, ST7735R은 SPI와 GPIO를 통해 제어가 가능하다.</p>
+<p>따라서 먼저 Device Tree 설정을 통해 SPI와 GPIO 설정을 해 주었고, 이를 기반으로 FBTFT 디바이스 드라이버를 로드해 보았다. 또한 FBTFT 드라이버는 ST7735R 뿐 아니라 여러 LCD 컨트롤러에 대한 드라이버를 지원하기 때문에 modprobe 로 모듈 로드 시 어떠한 컨트롤러를 사용할 지, 그리고 어떤 SPI 채널과 GPIO 핀들을 사용할 지 옵션으로 알려주었다.</p>
+<p>또한 FBFTF를 로드하고 난 후 임의의 점을 표시하거나, 콘솔 화면을 띄워 보는 등 몇 가지 방법을 통해 LCD를 제어해 보았다. 마지막으로 modprobe.d 에 fbtft와 관련된 파일을 추가하여 부팅 시 드라이버가 자동으로 로드되도록 설정해 보았다.</p>
+<p>재밌는 점은 다소 멀리 돌아왔지만 SPI를 사용하는 예제임에도 단순히 SPI 채널 설정정도만 했을 뿐 실제 장치를 사용하는 입장에서는 SPI 인터페이스를 전혀 사용하지 않았다는 점이다. 이러한 방법은 비교적 여러 단계의 Abstraction과 Subsystem들을 통해 가능하게 된 것으로, 아두이노와 같은 Firmware수준에서 SPI를 제어하거나 SPIDEV와 같이 SPI Command를 직접 전달하는 예제와 비교된다.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../2_practice/index.html" class="btn btn-neutral float-right" title="Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="0_Introduction_20190505.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Heecheol Yang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

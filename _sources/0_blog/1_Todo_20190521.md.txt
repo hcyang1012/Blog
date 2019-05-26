@@ -1,0 +1,3 @@
+# 작성해야 할 글감
+
+1. BBB에서 BSP 설정하기 [이 글](https://www.digikey.com/eewiki/display/linuxonarm/BeagleBone+Black) 참조
