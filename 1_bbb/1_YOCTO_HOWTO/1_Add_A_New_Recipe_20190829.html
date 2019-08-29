@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Start Yocto - Add a New Recipe &mdash; blog 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../../genindex.html" />
+    <link rel="search" title="검색" href="../../search.html" />
+    <link rel="next" title="Practice" href="../../2_practice/index.html" />
+    <link rel="prev" title="Start Yocto with Beaglebone Black" href="0_Start_20190828.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> blog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Beaglebone Black</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../0_SPI_HOWTO/index.html">BBB SPI Howto</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">BBB Yocto Howto</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="0_Start_20190828.html">Start Yocto with Beaglebone Black</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Start Yocto - Add a New Recipe</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ninvaders">맛보기 : nInvaders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recipe">Recipe 추가</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">빌드 스크립트 작성</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">버전 별 Recipe 작성</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-building-recipe">Test Building Recipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">정리</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_practice/index.html">Practice</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Beaglebone Black</a> &raquo;</li>
+        
+          <li><a href="index.html">BBB Yocto Howto</a> &raquo;</li>
+        
+      <li>Start Yocto - Add a New Recipe</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/1_bbb/1_YOCTO_HOWTO/1_Add_A_New_Recipe_20190829.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="start-yocto-add-a-new-recipe">
+<h1>Start Yocto - Add a New Recipe<a class="headerlink" href="#start-yocto-add-a-new-recipe" title="제목 주소">¶</a></h1>
+<p>이 문서에서는 <a class="reference external" href="https://hcyang1012.github.io/blog/1_bbb/1_YOCTO_HOWTO/0_Start_20190828.html">지난 문서 </a> 에 이어 새로운 어플리케이션 하나를 빌드에 포함시키는 방법에 대해 알아보자. 여기서는 <a class="reference external" href="http://ninvaders.sourceforge.net/">nInavders</a> 라는 게임을 예제로 사용할 것이다.</p>
+<p>이 문서 역시 <a class="reference external" href="https://bootlin.com/">Bootlin</a>의 <a class="reference external" href="https://bootlin.com/doc/training/yocto/">Yocto Project  and OpenEmbedded development course 의 자료</a>를 참고하여 작성하였다. 자세한 설명은 자료를 참고하는 것을 추천한다.</p>
+<div class="section" id="ninvaders">
+<h2>맛보기 : nInvaders<a class="headerlink" href="#ninvaders" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="http://ninvaders.sourceforge.net/">nInavders</a>는 고전 게임인 invaders를 콘솔에서 즐길 수 있게 ncurses 기반으로 개발한 버전이다.  프로젝트 홈페이지에 가면 소스코드를 다운받을 수 있으며, 간단히 다음과 같이 make 명령 만으로 빌드가 가능하다. (단 ncurses 라이브러리가 설치되어 있어야 한다.)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$  wget https://jaist.dl.sourceforge.net/project/ninvaders/ninvaders/0.1.1/ninvaders-0.1.1.tar.gz
+$  tar xvf ninvaders-0.1.1.tar.gz 
+$  <span class="nb">cd</span> ninvaders-0.1.1 
+$  ninvaders-0.1.1 make
+</pre></div>
+</div>
+<p>빌드가 완료되면 nInvaders라는 파일을 통해 게임을 즐길 수 있다. 이번 문서의 목표는 Yocto 를 이용해 이미지를 빌드 시 소스코드 다운로드부터 빌드까지 자동으로 이루어지도록 하고, 최종적으로는 생성된 실행파일인 nInvaders 파일을 타겟(Beaglebone Black) 의 /usr/bin/ 에 옮겨지도록 하는 것이다.</p>
+</div>
+<div class="section" id="recipe">
+<h2>Recipe 추가<a class="headerlink" href="#recipe" title="제목 주소">¶</a></h2>
+<div class="section" id="id1">
+<h3>Recipe 개요<a class="headerlink" href="#id1" title="제목 주소">¶</a></h3>
+<p>Recipe는 하나의 Software 가 빌드되어지도록 하는 Task들의 모음이다. 예를 들어, Linux Kernel을 빌드하기 위해서는 다음과 같은 Task들이 필요할 것이다.</p>
+<ul class="simple">
+<li>Source Code Download</li>
+<li>Toolchain Download</li>
+<li>Patch</li>
+<li>Compile</li>
+<li>Image Install</li>
+</ul>
+<p>Yocto에서는 위와 같이 소프트웨어를 빌드하기위해 수행되어져야 하는 각각의 논리적인 행동들이 Task로 정의된다. Recipe는 이러한 Task들의 집합으로, Yocto는 Recipe에 있는 Task들을 정의된 대로 순서대로 실행시켜 개발자가 원하는 하나의 소프트웨어가 이미지에 포함되어질 수 있도록 해 준다.</p>
+<p>Recipe를 만들 때 개발자가 자체적으로 Task들을 하나 하나 정의하고 실행 순서까지 정의 할 수 있지만, 다음과 같이 <a class="reference external" href="https://www.yoctoproject.org/docs/2.7.1/ref-manual/ref-manual.html#normal-recipe-build-tasks">기본적인 Task들</a>이 주어지기 때문에 각각에 용도에 맞추어 수행해야 할 내용들만 채워주면 쉽게 Recipe를 구성할 수 있다.</p>
+<ul class="simple">
+<li>do_fetch : 소스코드를 외부에서 가져올 때  수행되어야 할 내용들을 정의.</li>
+<li>do_unpack : 소스코드가 압축파일인 경우 압축을 풀 때  수행되어야 할 내용들을 정의.</li>
+<li>do_patch : 소스코드를 다운로드 받은 후 패치를 적용하여야 할 때 수행되어야 할 내용들을 정의.</li>
+<li>do_configure : 컴파일 전 빌드 환경 configuration을 할 때 수행되어야 할 내용들을 정의.</li>
+<li>do_compile : 컴파일 시 수행해야 할 내용들을 정의.</li>
+<li>do_install : 컴파일 후 생성물을 원하는 위치에 복사하고자 할 때 수행되어야 할 내용들을 정의</li>
+<li>do_package : 빌드 산출물에서 패키지를 생성할 시 수행되어야 할 내용들을 정의</li>
+<li>do_rootfs : rootfs를 구성할 때 수행되어야 할 내용들을 정의</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>디렉토리 추가 및 구성<a class="headerlink" href="#id2" title="제목 주소">¶</a></h3>
+<p>우선 원하는 Layer에 nInvaders의 Recipe를 추가해 주어야 한다. 보통은 Custum Layer를 생성 후 생성한 Layer에 Recipe를 추가하지만, 여기서는 Recipe를 만들고 추가하는 방법을 정리하는 것이 목적이므로 Poky에 추가해 보자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/yocto-labs/poky/meta/recipes-extended
+$ mkdir  ninvaders
+$ <span class="nb">cd</span> ninvaders
+</pre></div>
+</div>
+<p>Yocto에서 Recipe는 어플리케이션의 버전별로 관리가 가능하다. 이를 위해 Yocto에서는 Recipe를 만들 때 버전에 관계 없이 공통으로 적용되는 Task들이 정의되어 있는 .inc파일과 버전에 따라 다르게 동작해야 하는 Task들이 정의되는 Recipe 파일로 분리해서 Recipe를 정의하는 것이 가능하다. ninavders의 최신(마지막) 버전은 0.1.1이므로 다음과 같이 inc파일과 0.1.1 버전에 대한 Recipe 파일을 ninvaders 디렉토리 안에 만들자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch ninvaders.inc
+$ touch ninvaders_0.1.1.bb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>빌드 스크립트 작성<a class="headerlink" href="#id3" title="제목 주소">¶</a></h2>
+<p>사실 ninvaders는 버전도 몇 개 존재하지 않고, 작은 규모의 프로젝트이기 때문에 버전 별로 빌드 방법이 크게 다르지 않다. 따라서 .inc파일에 빌드 방법을 작성해도 무방하다. 다음과 같이 invaders.inc 파일의 내용을 채워주자.</p>
+<hr class="docutils" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi ninvadersi.inc
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SUMMARY</span> <span class="o">=</span> <span class="s2">&quot;A helloworld exmple for nInvaider&quot;</span>
+<span class="nv">HOMEPAGE</span> <span class="o">=</span> <span class="s2">&quot;http://ninvaders.sourceforge.net/&quot;</span>
+<span class="nv">SECTION</span> <span class="o">=</span> <span class="s2">&quot;base&quot;</span>
+
+<span class="nv">SRC_URI</span> <span class="o">=</span> <span class="s2">&quot;https://jaist.dl.sourceforge.net/project/ninvaders/ninvaders/0.1.1/ninvaders-0.1.1.tar.gz&quot;</span>
+<span class="nv">DEPENDS</span> <span class="o">=</span> <span class="s2">&quot;ncurses&quot;</span>
+
+do_compile<span class="o">(){</span>
+        oe_runmake <span class="s1">&#39;CC=${CC}&#39;</span> 
+<span class="o">}</span>
+
+do_install<span class="o">(){</span>
+        install -d <span class="si">${</span><span class="nv">D</span><span class="si">}${</span><span class="nv">bindir</span><span class="si">}</span>
+        install -m <span class="m">0755</span> nInvaders <span class="si">${</span><span class="nv">D</span><span class="si">}${</span><span class="nv">bindir</span><span class="si">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>내용들을 간단히 훑어보자.</p>
+<div class="section" id="id4">
+<h3>기본 정보<a class="headerlink" href="#id4" title="제목 주소">¶</a></h3>
+<ul class="simple">
+<li>SUMMARY / HOMEPAGE : Recipe에 대한 요약 정보들을 기술</li>
+<li>SECTION : 이 패키지가 속해있는 분류를 정의한다. 여기서는 중요하게 다루는 정보가 아니라 base로 작성해 두었다.</li>
+<li>SRC_URI : 소스코드의 주소. bitbake는 SRC_URI에서 명시되어 있는 소스코드를 다운로드받아 작업 디렉토리에 압축을 푼다.</li>
+<li>DEPENDS : 의존성 있는 라이브러리를 추가한다. 여기서는 ncurses 라이브러리를 추가하였다.</li>
+</ul>
+</div>
+<div class="section" id="do-compile">
+<h3>do_compile()<a class="headerlink" href="#do-compile" title="제목 주소">¶</a></h3>
+<p>do_compile() 함수는 compile시에 어떤 작업을 수행해야 할 지 기술하는 함수이다. 여기서는 Yocto가 제공하는 함수인 oe_runmake를 사용하였다.  현 상태에서는 make를 실행시키는 것과 동일하다.</p>
+<p>단, 빌드 시 크로스 컴파일이 되어야 하기 때문에 CC 환경 변수를 make에 위와 같이 적용시켰다. 참고하도록 하자.</p>
+</div>
+<div class="section" id="do-install">
+<h3>do_install()<a class="headerlink" href="#do-install" title="제목 주소">¶</a></h3>
+<p>do_install 함수에서는 rootfs의 /usr/bin/디렉토리를 생성시킨 후 거기에 nInvaders라는 실행 파일이 복사되도록 기술하였다.</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>버전 별 Recipe 작성<a class="headerlink" href="#id5" title="제목 주소">¶</a></h2>
+<p>ninvaders.inc 파일은 버전에 관계 없이 공통적으로 수행되는 작업들을 정의해 놓은 파일에 불과하기 때문에 이 파일을 사용하기 위해서는 다음과 같이 실제 Recipe 파일인 ninvaders_0.1.1.bb 파일이 ninvaders.inc 파일을 포함하도록 해야 한다.</p>
+<hr class="docutils" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi ninvaders_0.1.1.bb 
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>require ninvaders.inc
+
+<span class="nv">LICENSE</span> <span class="o">=</span> <span class="s2">&quot;GPLv3&quot;</span>
+<span class="nv">LIC_FILES_CHKSUM</span> <span class="o">=</span> <span class="s2">&quot;file://README;md5=62f2ab9779d8f2b6bce96bdbad303623&quot;</span>
+SRC_URI<span class="o">[</span>md5sum<span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;97b2c3fb082241ab5c56ab728522622b&quot;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>제일 첫 줄에는 앞서 만들어 둔 ninvaders.inc 파일을 포함시키기 위해 require문으로 파일을 포함시켰다.</p>
+<p>Yocto로 Recipe를 빌드할 때에는 반드시 라이선스와 라이선스 파일 그리고 라이선스/소스코드에 대한 Checksum을 지정해 주어야 한다.</p>
+<p>다만, nInvaders 는 라이선스 관련 파일이 존재하지 않기 때문에 이 예제에서는 소스코드에 포함된 README 파일을 대신 사용하였다.</p>
+<p>README 파일 및 소스코드(ninvaders-0.1.1.tar.gz) 의 Checksum은 MD5 를 사용했으며, 다음과 같이 미리 받아놓은 소스코드에서 계산하여 추출하였다.</p>
+<hr class="docutils" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 소스코드 MD5 (SRC_URI[md5sum]) 계산</span>
+$ md5sum ninvaders-0.1.1.tar.gz 
+97b2c3fb082241ab5c56ab728522622b  ninvaders-0.1.1.tar.gz
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 라이선스 파일(README) MD5 게산 </span>
+<span class="c1"># LIC_FILES_CHKSUM = &quot;file://README;md5=62f2ab9779d8f2b6bce96bdbad303623&quot;</span>
+$ md5sum README 
+62f2ab9779d8f2b6bce96bdbad303623  README
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="test-building-recipe">
+<h2>Test Building Recipe<a class="headerlink" href="#test-building-recipe" title="제목 주소">¶</a></h2>
+<p>Layer에 Recipe를 포함시켜 이미지 전체를 빌드해 보기 전에 새로 만든 ninvaders의 빌드가 질 되는지 확인해 보자. 다음과 같은 명령어로 ninvaders만 빌드 테스트가 가능하다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nv">MACHINE</span><span class="o">=</span><span class="s2">&quot;beaglebone&quot;</span> bitbake ninvaders
+</pre></div>
+</div>
+<p>특별한 문제가 발생하지 않는다면 Layer에 ninvaders 패키지를 포함시켜 빌드해 보자.</p>
+<hr class="docutils" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi conf/local.conf
+</pre></div>
+</div>
+<p>build/local.conf 파일 아래에 다음과 같이 추가하자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># conf/local.conf</span>
+<span class="c1"># 앞 내용 생략</span>
+<span class="c1"># 맨 끝에 다음과 같이 추가한다.</span>
+<span class="nv">IMAGE_INSTALL_append</span> <span class="o">=</span> <span class="s2">&quot; ninvaders&quot;</span>
+</pre></div>
+</div>
+<p>편집이 끝났으면 이미지 빌드가 정상적으로 되는지 확인해 보자</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nv">MACHINE</span><span class="o">=</span>beaglebone bitbake core-image-minimal
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>완성된 rootfs 를 SD카드에 복사 후 부틱시키면 다음과 같이 /usr/bin 아래에 nInvaders 라는 파일이 생성된 것을 확인할 수 있고, 실행도 가능하다.</p>
+<hr class="docutils" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>root@beaglebone:/bin# ls -al /usr/bin/nInvaders 
+-rwxr-xr-x    <span class="m">1</span> root     root         <span class="m">46632</span> Aug <span class="m">28</span> <span class="m">04</span>:49 /usr/bin/nInvaders
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>root@beaglebone:/bin# nInvaders
+
+                            ____                 __          
+                      ___  /  _/__ _  _____  ___/ /__ _______
+                     / _ <span class="se">\_</span>/ // _ <span class="se">\ </span><span class="p">|</span>/ / _ <span class="sb">`</span>/ _  / -_<span class="o">)</span> __<span class="o">(</span>_-&lt;
+                    /_//_/___/_//_/___/<span class="se">\_</span>,_/<span class="se">\_</span>,_/<span class="se">\_</span>_/_/ /___/
+
+                                   &lt;o o&gt; <span class="o">=</span> <span class="m">500</span>
+                                              
+                                   ,^,   <span class="o">=</span> <span class="m">200</span>
+                                              
+                                   _O-   <span class="o">=</span> <span class="m">150</span>
+                                              
+                                   -o-   <span class="o">=</span> <span class="m">100</span>
+
+                              Press SPACE to start
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h2>정리<a class="headerlink" href="#id6" title="제목 주소">¶</a></h2>
+<p>이번 문서에서는 Layer에 Recipe를 추가하는 방법에 대해 정리해 보았다. 예제로서 nInvader라는 간단한 콘솔용 프로그램을 이용하였고, Recipe에 소스코드 다운로드 방법/ 컴파일방법 / 설치 방법 등을 기술하여 Yocto가 nInvader를 빌드/설치할 수 있도록 했다. 마지막으로 Recipe로 만들어진 패키지를 Layer에 포함시켜 만들어진 이미지를 Beaglebone Black에서 직접 테스트 해 보았다.</p>
+<p>일단은 동작하는 예제를 만들어 봤지만 몇가지 추가로 확인해 봐야 할 것들이 있다. 먼저, Recipe만 단독으로 빌드 하였을 때 에러가 없다는 것 외에는 정상적으로 만들어졌는지 확인하는 방법을 찾아봐야겠다. 그리고 Recipe를 만들면서 사용한 몇 가지 환경변수들이 어떤 의미를 가지는지도 구체적으로 확인해 봐야겠다.</p>
+<p>또한 이번 예제에서는 Recipe를 다뤄본다는 의미에서 Poky에 Recipe를 직접 추가하여 테스트 했지만 실제로는 Custom Layer를 추가한 후 여기에 Recipe를 추가하는 방식으로 구성 하는 것이 보통이다. 이에 다음에는 Layer를 구성하는 방법에 대해 알아보자.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../2_practice/index.html" class="btn btn-neutral float-right" title="Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="0_Start_20190828.html" class="btn btn-neutral float-left" title="Start Yocto with Beaglebone Black" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Heecheol Yang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
