@@ -1,0 +1,543 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Start Yocto with Beaglebone Black &mdash; blog 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../../genindex.html" />
+    <link rel="search" title="검색" href="../../search.html" />
+    <link rel="next" title="Practice" href="../../2_practice/index.html" />
+    <link rel="prev" title="BBB Yocto Howto" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> blog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Beaglebone Black</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../0_SPI_HOWTO/index.html">BBB SPI Howto</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">BBB Yocto Howto</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Start Yocto with Beaglebone Black</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">개발 환경</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-yocto">Download Yocto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-the-build-environment">Set up the build environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-the-sd-card">Set up the  SD card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">시리얼 통신 환경 구축</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">환경변수 설정</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">정리</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_practice/index.html">Practice</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Beaglebone Black</a> &raquo;</li>
+        
+          <li><a href="index.html">BBB Yocto Howto</a> &raquo;</li>
+        
+      <li>Start Yocto with Beaglebone Black</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/1_bbb/1_YOCTO_HOWTO/0_Start_20190828.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="start-yocto-with-beaglebone-black">
+<h1>Start Yocto with Beaglebone Black<a class="headerlink" href="#start-yocto-with-beaglebone-black" title="제목 주소">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="제목 주소">¶</a></h2>
+<p>이 문서에서는 Yocto 를 이용하여 BSP를 구성 및 빌드한 후 이를 Beaglebone Black 보드에 올려 테스트하는 방법을 다룬다.</p>
+<p>이 문서는, <a class="reference external" href="https://bootlin.com/">Bootlin</a>의 <a class="reference external" href="https://bootlin.com/doc/training/yocto/">Yocto Project  and OpenEmbedded development course 의 자료</a>를 참고하여 작성하였다. 자세한 설명은 자료를 참고하는 것을 추천한다.</p>
+</div>
+<div class="section" id="id1">
+<h2>개발 환경<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<ul class="simple">
+<li>Linux Mint 19.1 (Yocto는 Ubuntu를 권장한다.)</li>
+</ul>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="제목 주소">¶</a></h2>
+<p>본적적인 작업을 시작하기 전 작업 디렉토리를 다음과 같이 생성한다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span> <span class="o">&amp;&amp;</span> mkdir yocto-labs
+</pre></div>
+</div>
+<p>다음으로, Yocto 를 사용하기 위한 필수 패키지들을 설치한다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/yocto-labs
+$ sudo apt install bc build-essential chrpath cpio diffstat gawk git python texinfo wget
+</pre></div>
+</div>
+<p>마지막으로 본 예제에서 사용할 몇 가지 패치 및 도구들이 포함되어 있는 패키지를 다운받고, 압축을 해제한다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span>
+$ wget https://bootlin.com/doc/training/yocto/yocto-labs.tar.xz
+$ tar xvf yocto-labs.tar.xz
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-yocto">
+<h2>Download Yocto<a class="headerlink" href="#download-yocto" title="제목 주소">¶</a></h2>
+<div class="section" id="download-yocto-poky">
+<h3>Download Yocto &amp; Poky<a class="headerlink" href="#download-yocto-poky" title="제목 주소">¶</a></h3>
+<p>Yocto로 BSP만들기 위해서는 Yocto에 포함된 빌드 시스템과 이를 이용하여 Rootfs / Linux Kernel / Boot Loader 및 User Application 등을 만드는 여러 개의 Layer 가 필요하다. 이 중에서 User Application 이나 Linux Kernel 등 대부분의 Layer들은 제품을 만드는 개발자들이 구성하지만, 그 기반이 되는 대부분의 라이브러리나 유틸리티 (glibc/systemd/tar/등..) 들은 비슷비슷하기 때문에 Yocto는 이런 공통적인 항목들을 모아서 Poky라고 불리우는 Reference System을 하나의 Layer로서 제공한다.</p>
+<p>즉 개발자들은 Poky에 원하는 Layer들이나 Recipe들을 넣거나 빼면서 자신만의 BSP를 구성할 수 있다. Poky는 Yocto 를 다운로드 받을 시 함께 포함되어 받을 수 있다.</p>
+<p>이 글을 시점에 Yocto는 THUD 2.6.1 버전까지 나와 있지만, 이 문서에서는 SUMO-19.0.0 버전을 사용한다. 다음과 같이 Yocto를 다운로드 받고, 필요한 패치를 적용하자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/yocto-labs
+$ git clone git://git.yoctoproject.org/poky.git
+$ <span class="nb">cd</span> <span class="nv">$HOME</span>/yocto-labs/poky
+$ git checkout -b sumo-19.0.0 sumo-19.0.0
+$ git am <span class="nv">$HOME</span>/yocto-labs/bootlin-lab-data/$ <span class="m">0001</span>-bblayers-do-not-include-meta-yocto-bsp.patch
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-meta-ti">
+<h3>Download meta-ti<a class="headerlink" href="#download-meta-ti" title="제목 주소">¶</a></h3>
+<p>Poky는 Linux 상에서 동작하는 라이브러리나 유틸리티 등을 묶어놓은 Layer이기 때문에 실제 보드에서 이를 동작시키기 위한 Boot Loader 나 Linux Kernel등은 따로 Layer를 구성해 주어야 한다.</p>
+<p>이 글에서 사용하는 보드인 Beaglebone Black는 TI의 AM335x SoC가 탑재되어 있고, TI 에서는 meta-ti 라는 레이어에서 이 SoC를 위한 Layer를 제공한다.  다음과 같이 다운로드 후 필요한 패치들을 적용시키자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/yocto-labs
+$ git clone git://git.yoctoproject.org/meta-ti.git
+$ <span class="nb">cd</span> <span class="nv">$HOME</span>/yocto-labs/meta-ti
+$ git checkout -b sumo ti2018.02
+$ git am <span class="nv">$HOME</span>/yocto-labs/bootlin-lab-data/$ <span class="m">0001</span>-Simplify-linux-ti-staging-recipe.patch
+$ git am <span class="nv">$HOME</span>/yocto-labs/bootlin-lab-data/$ <span class="m">0002</span>-do-not-use-base_read_file.patch
+$ git am <span class="nv">$HOME</span>/yocto-labs/bootlin-lab-data/$ <span class="m">0003</span>-recipes-bsp-u-boot-fix-non-booting-U-Boot.patch
+$ git am <span class="nv">$HOME</span>/yocto-labs/bootlin-lab-data/0004-fix-bitbake-warnings.patch
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="set-up-the-build-environment">
+<h2>Set up the build environment<a class="headerlink" href="#set-up-the-build-environment" title="제목 주소">¶</a></h2>
+<p>이제 필요한 파일들은 모두 다운로드 받았으니 빌드를 진행해 보자. 먼저, 다음과 같은 명령으로 Yocto Build에 필요한 환경 변수들을 설정해 주자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/yocto-labs
+$ <span class="nb">source</span> poky/oe-init-build-env
+</pre></div>
+</div>
+<p>위 명령을 수행하면 <em>$HOME/yocto-labs/build</em> 라는 디렉토리로 현재 위치가 이동된다.  build 디렉토리 안에는 빌드를 수행하기 위한 몇 가지 환경설정 파일이 있고, Build 과정에서 나오는 여러 산출물들도 이 디렉토리 안에  생성된다.</p>
+<p>이 상태 그대로 빌드를 수행해도 빌드는 가능하지만, 이렇게 되면 Default 환경인 QEMU 기반 이미지가 생성된다. 따라서 우리는 두 가지 설정을 추가로 해 주어야 한다.</p>
+<ol class="simple">
+<li>Target 을 Beaglebone Black으로 설정</li>
+<li>Build 시 meta-ti Layer를 포함하도록 설정</li>
+</ol>
+<p>위 1번 항목은 Build 명령어 수행 시 MACHINE 환경변수를 설정함으로써 설정 가능하다. 2번 항목은 다음과 같이 build/conf/bblayers.conf 파일을 수정함으로써 설정 가능하다</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/yocto-labs/build
+$ vi conf/bblayers.conf
+</pre></div>
+</div>
+<p>다음은 추가 전 bblayers.conf 파일의 기본 내용물이다. 경로는 자신의 컴퓨터 환경에 따라 다를 수 있다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf</span>
+<span class="c1"># changes incompatibly</span>
+<span class="nv">POKY_BBLAYERS_CONF_VERSION</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+
+<span class="nv">BBPATH</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">TOPDIR</span><span class="si">}</span><span class="s2">&quot;</span>
+BBFILES ?<span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+BBLAYERS ?<span class="o">=</span> <span class="s2">&quot; \</span>
+<span class="s2">  /media/hcyang/work/work/bbb/yocto-labs/poky/meta \</span>
+<span class="s2">  /media/hcyang/work/work/bbb/yocto-labs/poky/meta-poky \</span>
+<span class="s2">  &quot;</span>
+</pre></div>
+</div>
+<p>위 내용과 같은 bblayers.conf 파일의 뒷부분에 다음과 같이 meta-ti Layer의 경로를 추가해주자. <strong>반드시 절대 경로를 적어주어야 한다.</strong></p>
+<p>다음은 추가 할 내용이다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/media/hcyang/work/work/bbb/yocto-labs/meta-ti <span class="se">\</span>
+</pre></div>
+</div>
+<p>다음은 위 문장을 추가한 결과이다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf</span>
+<span class="c1"># changes incompatibly</span>
+<span class="nv">POKY_BBLAYERS_CONF_VERSION</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+
+<span class="nv">BBPATH</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">TOPDIR</span><span class="si">}</span><span class="s2">&quot;</span>
+BBFILES ?<span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+BBLAYERS ?<span class="o">=</span> <span class="s2">&quot; \</span>
+<span class="s2">  /media/hcyang/work/work/bbb/yocto-labs/poky/meta \</span>
+<span class="s2">  /media/hcyang/work/work/bbb/yocto-labs/poky/meta-poky \</span>
+<span class="s2">  /media/hcyang/work/work/bbb/yocto-labs/meta-ti \</span>
+<span class="s2">  &quot;</span>
+</pre></div>
+</div>
+<p>편집은 끝났다. 다음과 같은 명령으로 빌드를 진행해 보자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/yocto-labs/build
+$ <span class="nv">MACHINE</span><span class="o">=</span>beaglebone bitbake core-image-minimal
+</pre></div>
+</div>
+<p><em>bitbake core-image-minimal</em> 명령이 실제 이미지를 생성하는 명령이다. 다만 Beaglebone Black 용 이미지를 만들기 위해 앞에 <em>MACHINE=beaglebone</em> 과 같은 환경변수를 지정해 주었다. MACHINE 환경변수는  <em>build/conf/bblayers.conf</em> 파일에서도 지정이 가능하다.</p>
+<p>위 명령을 실행하고 나면 한참 동안 빌드한 후 빌드 이미지가 생성된다. 다음과 같은 명령으로 확인해 보자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$BUILDDIR</span>/tmp/deploy/images/beaglebone/
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-up-the-sd-card">
+<h2>Set up the  SD card<a class="headerlink" href="#set-up-the-sd-card" title="제목 주소">¶</a></h2>
+<p>빌드 된 이미지를 이제 SD 카드에 복사한 후 부팅시켜 보자.  비글본 블랙에 기본 탑재되어 있는 U-Boot는 SD 카드의 Boot 파티션에서 커널 및 디바이스 트리를 읽어와 부팅하는 기능을 가지고 있기 때문에 이 기능을 활용하여 만들어진 이미지를 부팅시킬 것이다.</p>
+<div class="section" id="partitioning-the-sd-card">
+<h3>Partitioning the SD Card<a class="headerlink" href="#partitioning-the-sd-card" title="제목 주소">¶</a></h3>
+<p>먼저, 부팅시킬 SD카드에 boot 파티션과 rootfs 파티션을 만들어야 한다. boot 파티션은 리눅스 커널 이미지 및 사용할 디바이스 트리를 저장하기 위한 파티션이고, rootfs 파티션은 리눅스커널이 부팅 후 로드할  rootfs 가 구성되어 있는 파티션이다.</p>
+<p>직접 파티션을 작성해도 무방하지만, 여기서는 앞서 다운받아 놓은 스크립트를 다음과 같이 이용하여 SD카드 파티션을 구성하겠다.</p>
+<p>먼저 SD카드를 호스트 컴퓨터에 인식시키고, 다음 스크립트를 실행시키자. 단, 여기서는 SD카드가 /dev/sdc로 인식되었다고 가정하겠다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/yocto-labs/bootlin-lab-data/script/
+$ umount /dev/sdc*
+$ sudo ./format_sdcard.sh /dev/sdc
+</pre></div>
+</div>
+<p>스크립트를 실행시킨 후 SD카드를 다시 인식시키면 boot 파티션과 rootfs 파티션이 인식될 것이다. 대부분의 리눅스 배포판은 /media/$USER/boot 및 /media/$USER/rootfs 디렉토리에 자동으로 파티션을 인식시킬 것이다. 안 되었다면 마운트 시키자.</p>
+<p>마운트가 정상적으로 되었다면 부팅용 이미지와 rootfs를 다음과 같은 명령으로 각 파티션에 복사하자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># boot 파티션에 부팅에 필요한 이미지 복사</span>
+$ cp <span class="nv">$BUILDDIR</span>/tmp/deploy/images/beaglebone/<span class="o">{</span>MLO,u-boot.img,zImage<span class="o">}</span> /media/<span class="nv">$USER</span>/boot
+$ cp <span class="nv">$BUILDDIR</span>/tmp/deploy/images/beaglebone zImage-am335x-boneblack.dtb /media/<span class="nv">$USER</span>/boot/dtb
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># rootfs 파티션에 rootfs 파일들 복사</span>
+$ sudo tar xpf <span class="nv">$BUILDDIR</span>/tmp/deploy/images/beaglebone/core-image-minimal-beaglebone.tar.xz -C /media/<span class="nv">$USER</span>/rootfs
+$ sync
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>시리얼 통신 환경 구축<a class="headerlink" href="#id2" title="제목 주소">¶</a></h2>
+<p>만들어진 SD카드로 부팅하기 위해서는 Beaglebone Black에 기본 탑재되어 있는 U-Boot가 SD 카드에 있는 이미지로 리눅스를 부팅시키도록 U-Boot 환경 변수를 고쳐줘야 한다.  이를 위해서는 U-Boot의 UART 시리얼 콘솔로 접속할 수 있어야 한다.</p>
+<p><a class="reference external" href="https://www.dummies.com/computers/beaglebone/how-to-connect-the-beaglebone-black-via-serial-over-usb/">이 링크</a> 에 Beaglebone Black과 USB-TTL 시리얼 케이블의 연결이 자세히 나타나 있다.</p>
+<p><img alt="&quot;dominating_sets_example2&quot;" src="https://www.dummies.com/wp-content/uploads/466809.image1.jpg" /></p>
+<p><em>Fig. 1: Beaglebone Black UART 연결(출처 : Rui Santos, Luis Miguel Costa Perestrelo, How to Connect the BeagleBone Black via Serial over USB,https://www.dummies.com/ <a class="reference external" href="https://www.dummies.com/computers/beaglebone/how-to-connect-the-beaglebone-black-via-serial-over-usb/">Link</a></em>)</p>
+<p>핀 연결 구성은 다음과 같다.</p>
+<ul class="simple">
+<li>PIN1 (Black) : Ground</li>
+<li>PIN4 (Green) : Rx (To BBB)</li>
+<li>PIN5 (White) : Tx (From BBB)</li>
+</ul>
+<p>연결하였으면 편한 시리얼 터미널로 115200bps 의 속도로 접속한 뒤, SD카드를 넣고 전원을 인가하자.</p>
+<p>전원을 인가하면 다음과 같은 화면이 시리얼 터미널에 나타난다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>U-Boot SPL <span class="m">2018</span>.09-dirty <span class="o">(</span>Mar <span class="m">01</span> <span class="m">2019</span> - <span class="m">15</span>:27:46 +0900<span class="o">)</span>
+Trying to boot from MMC2
+Loading Environment from EXT4... 
+** Unable to use mmc <span class="m">0</span>:1 <span class="k">for</span> loading the env **
+
+U-Boot <span class="m">2018</span>.09-dirty <span class="o">(</span>Mar <span class="m">01</span> <span class="m">2019</span> - <span class="m">15</span>:27:46 +0900<span class="o">)</span>
+
+CPU  : AM335X-GP rev <span class="m">2</span>.1
+I2C:   ready
+DRAM:  <span class="m">512</span> MiB
+No match <span class="k">for</span> driver <span class="s1">&#39;omap_hsmmc&#39;</span>
+No match <span class="k">for</span> driver <span class="s1">&#39;omap_hsmmc&#39;</span>
+Some drivers were not found
+Reset Source: Power-on reset has occurred.
+RTC 32KCLK Source: External.
+MMC:   OMAP SD/MMC: <span class="m">0</span>, OMAP SD/MMC: <span class="m">1</span>
+Loading Environment from EXT4... 
+** Unable to use mmc <span class="m">0</span>:1 <span class="k">for</span> loading the env **
+Board: BeagleBone Black
+&lt;ethaddr&gt; not set. Validating first E-fuse MAC
+BeagleBone Black:
+BeagleBone: cape eeprom: i2c_probe: 0x54:
+BeagleBone: cape eeprom: i2c_probe: 0x55:
+BeagleBone: cape eeprom: i2c_probe: 0x56:
+BeagleBone: cape eeprom: i2c_probe: 0x57:
+Net:   eth0: MII MODE
+cpsw, usb_ether
+Press SPACE to abort autoboot in <span class="m">2</span> seconds
+</pre></div>
+</div>
+<p>맨 아래줄과 같이 U-Boot는 처음 실행 후 수 초 간 사용자의 입력을 기다린 후 부팅을 계속 진행하는데, 이 상태에서 카운트가 끝나기 전 SPACE 키를 누르면 다음과 같이 U-Boot 콘솔에 접속할 수 있게 된다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>U-Boot SPL <span class="m">2018</span>.09-dirty <span class="o">(</span>Mar <span class="m">01</span> <span class="m">2019</span> - <span class="m">15</span>:27:46 +0900<span class="o">)</span>
+Trying to boot from MMC2
+Loading Environment from EXT4... 
+** Unable to use mmc <span class="m">0</span>:1 <span class="k">for</span> loading the env **
+
+U-Boot <span class="m">2018</span>.09-dirty <span class="o">(</span>Mar <span class="m">01</span> <span class="m">2019</span> - <span class="m">15</span>:27:46 +0900<span class="o">)</span>
+
+CPU  : AM335X-GP rev <span class="m">2</span>.1
+I2C:   ready
+DRAM:  <span class="m">512</span> MiB
+No match <span class="k">for</span> driver <span class="s1">&#39;omap_hsmmc&#39;</span>
+No match <span class="k">for</span> driver <span class="s1">&#39;omap_hsmmc&#39;</span>
+Some drivers were not found
+Reset Source: Power-on reset has occurred.
+RTC 32KCLK Source: External.
+MMC:   OMAP SD/MMC: <span class="m">0</span>, OMAP SD/MMC: <span class="m">1</span>
+Loading Environment from EXT4... 
+** Unable to use mmc <span class="m">0</span>:1 <span class="k">for</span> loading the env **
+Board: BeagleBone Black
+&lt;ethaddr&gt; not set. Validating first E-fuse MAC
+BeagleBone Black:
+BeagleBone: cape eeprom: i2c_probe: 0x54:
+BeagleBone: cape eeprom: i2c_probe: 0x55:
+BeagleBone: cape eeprom: i2c_probe: 0x56:
+BeagleBone: cape eeprom: i2c_probe: 0x57:
+Net:   eth0: MII MODE
+cpsw, usb_ether
+Press SPACE to abort autoboot in <span class="m">2</span> <span class="nv">seconds</span>
+<span class="o">=</span>&gt; <span class="c1"># SPACE 키를 눌러 콘솔 접속에 성공하면 =&gt; 마크와 함께 쉘이 실행된다.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>환경변수 설정<a class="headerlink" href="#id3" title="제목 주소">¶</a></h2>
+<p>U-Boot 콘솔에 접속했으면 다음과 같은 환경변수를 설정 후 저장하자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>setenv bootcmd <span class="s1">&#39;mmc rescan; fatload mmc 0 0x80200000 zImage; fatload mmc 0 0x82000000 dtb; bootz 0x80200000 - 0x82000000&#39;</span>
+setenv bootargs <span class="s1">&#39;console=ttyS0,115200 root=/dev/mmcblk0p2 rootwait rw&#39;</span>
+saveenv
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>참고</strong></p>
+<p>현재 내가 가지고 있는 U-Boot에는 bootcmd 환경변수가 다음과 같이 설정되어 있었다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">=</span>&gt; env print bootcmd
+<span class="nv">bootcmd</span><span class="o">=</span><span class="k">if</span> <span class="nb">test</span> <span class="si">${</span><span class="nv">boot_fit</span><span class="si">}</span> -eq <span class="m">1</span><span class="p">;</span> <span class="k">then</span> run update_to_fit<span class="p">;</span> <span class="k">fi</span><span class="p">;</span> run findfdt<span class="p">;</span> run init_console<span class="p">;</span> run envboot<span class="p">;</span> run distro_bootcmd
+</pre></div>
+</div>
+<p>bootargs 환경변수는 따로 저장되어 있지 않았다.</p>
+<hr class="docutils" />
+<p>저장하였으면 boot 명령을 사용하거나 전원을 다시 인가하여 리눅스를 부팅시켜보자.</p>
+<p>다음은 부팅 로그의 일부를 캡쳐한 내용이다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>U-Boot <span class="m">2018</span>.09-dirty <span class="o">(</span>Mar <span class="m">01</span> <span class="m">2019</span> - <span class="m">15</span>:27:46 +0900<span class="o">)</span>
+
+CPU  : AM335X-GP rev <span class="m">2</span>.1
+I2C:   ready
+DRAM:  <span class="m">512</span> MiB
+No match <span class="k">for</span> driver <span class="s1">&#39;omap_hsmmc&#39;</span>
+No match <span class="k">for</span> driver <span class="s1">&#39;omap_hsmmc&#39;</span>
+Some drivers were not found
+Reset Source: Power-on reset has occurred.
+RTC 32KCLK Source: External.
+MMC:   OMAP SD/MMC: <span class="m">0</span>, OMAP SD/MMC: <span class="m">1</span>
+Loading Environment from EXT4... 
+** Unable to use mmc <span class="m">0</span>:1 <span class="k">for</span> loading the env **
+Board: BeagleBone Black
+&lt;ethaddr&gt; not set. Validating first E-fuse MAC
+BeagleBone Black:
+BeagleBone: cape eeprom: i2c_probe: 0x54:
+BeagleBone: cape eeprom: i2c_probe: 0x55:
+BeagleBone: cape eeprom: i2c_probe: 0x56:
+BeagleBone: cape eeprom: i2c_probe: 0x57:
+Net:   eth0: MII MODE
+cpsw, usb_ether
+Press SPACE to abort autoboot in <span class="m">2</span> <span class="nv">seconds</span>
+<span class="o">=</span>&gt; setenv bootcmd <span class="s1">&#39;mmc rescan; fatload mmc 0 0x80200000 zImage; fatload mmc 0 0x82000000 dtb; bootz 0x80200000 - 0x82000000&#39;</span>
+<span class="o">=</span>&gt; setenv bootargs <span class="s1">&#39;console=ttyS0,115200 root=/dev/mmcblk0p2 rootwait rw&#39;</span>
+<span class="o">=</span>&gt; env print bootcmd
+<span class="nv">bootcmd</span><span class="o">=</span>mmc rescan<span class="p">;</span> fatload mmc <span class="m">0</span> 0x80200000 zImage<span class="p">;</span> fatload mmc <span class="m">0</span> 0x82000000 dtb<span class="p">;</span> bootz 0x80200000 - <span class="nv">0x82000000</span>
+<span class="o">=</span>&gt; env print bootargs
+<span class="nv">bootargs</span><span class="o">=</span><span class="nv">console</span><span class="o">=</span>ttyS0,115200 <span class="nv">root</span><span class="o">=</span>/dev/mmcblk0p2 rootwait <span class="nv">rw</span>
+<span class="o">=</span>&gt; boot
+<span class="m">3998208</span> bytes <span class="nb">read</span> in <span class="m">256</span> ms <span class="o">(</span><span class="m">14</span>.9 MiB/s<span class="o">)</span>
+<span class="m">36841</span> bytes <span class="nb">read</span> in <span class="m">10</span> ms <span class="o">(</span><span class="m">3</span>.5 MiB/s<span class="o">)</span>
+<span class="c1">## Flattened Device Tree blob at 82000000</span>
+   Booting using the fdt blob at 0x82000000
+   Loading Device Tree to 8fff4000, end 8fffffe8 ... OK
+
+Starting kernel ...
+
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> Booting Linux on physical CPU 0x0
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> Linux version <span class="m">4</span>.14.54-g0b59bc3be7 <span class="o">(</span>oe-user@oe-host<span class="o">)</span> <span class="o">(</span>gcc version <span class="m">7</span>.3.0 <span class="o">(</span>GCC<span class="o">))</span> <span class="c1">#1 PREEMPT Mon Aug 26 16:53:37 UTC 2019</span>
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> CPU: ARMv7 Processor <span class="o">[</span>413fc082<span class="o">]</span> revision <span class="m">2</span> <span class="o">(</span>ARMv7<span class="o">)</span>, <span class="nv">cr</span><span class="o">=</span>10c5387d
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> OF: fdt: Machine model: TI AM335x BeagleBone Black
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> Memory policy: Data cache writeback
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> efi: Getting EFI parameters from FDT:
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> efi: UEFI not found.
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> cma: Reserved <span class="m">48</span> MiB at 0x9d000000
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> CPU: All CPU<span class="o">(</span>s<span class="o">)</span> started in SVC mode.
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> AM335X ES2.1 <span class="o">(</span>sgx neon<span class="o">)</span>
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> Built <span class="m">1</span> zonelists, mobility grouping on.  Total pages: <span class="m">129920</span>
+<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> Kernel <span class="nb">command</span> line: <span class="nv">console</span><span class="o">=</span>ttyS0,115200 <span class="nv">root</span><span class="o">=</span>/dev/mmcblk0p2 rootwait rw
+
+<span class="c1"># 중간 생략</span>
+...
+
+Poky <span class="o">(</span>Yocto Project Reference Distro<span class="o">)</span> <span class="m">2</span>.5 beaglebone /dev/ttyS0
+
+beaglebone login: root
+root@beaglebone:~# 
+</pre></div>
+</div>
+<p>마지막 라인과 같이 root ID로 접속이 가능하다.</p>
+</div>
+<div class="section" id="id4">
+<h2>정리<a class="headerlink" href="#id4" title="제목 주소">¶</a></h2>
+<p>본 문서에서는 Yocto 기반 BSP를 구성하여 빌드해 보고, 이를 Beaglebone Black에 올려 부팅시켜보는 방법을 알아보았다.
+이를 위해 Yocto(+Poky) 를 다운로드 받았고, 여기에 meta-ti Layer를 추가하여 Beaglebone Black 용 커널도 빌드 이미지에 포함되도록 하였다.</p>
+<p>또한 U-Boot의 환경변수를 설정하여 SD카드의 boot파티션에서 리눅스 커널 및 디바이스 트리 이미지를 읽어서 부팅할 수 있도록 해 보았다. 이렇게 하면 복잡한 파티션 설정 없이 비교적 간단하게 만들어진 이미지를 테스트 해 볼 수 있다.</p>
+<p>다음은 이미 존재하는 Layer에 간단한 어플리케이션을 포함시켜 볼 계획이다.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../2_practice/index.html" class="btn btn-neutral float-right" title="Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="BBB Yocto Howto" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Heecheol Yang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

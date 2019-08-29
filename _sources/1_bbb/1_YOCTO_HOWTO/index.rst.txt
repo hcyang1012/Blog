@@ -1,9 +1,8 @@
-Beaglebone Black
+BBB Yocto Howto
 ================================
 
 .. toctree::
 	:glob:
 	:titlesonly:
 
-	0_SPI_HOWTO/index.rst
-	1_YOCTO_HOWTO/index.rst
+    ./0_Start_20190828.md

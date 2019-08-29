@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>BBB SPI Howto &mdash; blog 1.0 documentation</title>
+  <title>BBB Yocto Howto &mdash; blog 1.0 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="색인" href="../../genindex.html" />
     <link rel="search" title="검색" href="../../search.html" />
-    <link rel="next" title="Introduction" href="0_Introduction_20190505.html" />
-    <link rel="prev" title="Beaglebone Black" href="../index.html" /> 
+    <link rel="next" title="Start Yocto with Beaglebone Black" href="0_Start_20190828.html" />
+    <link rel="prev" title="FBTFT with Beaglebone Black" href="../0_SPI_HOWTO/1_FBTFT_with_BBB_20190521.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,12 +84,11 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Beaglebone Black</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">BBB SPI Howto</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="0_Introduction_20190505.html">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html">FBTFT with Beaglebone Black</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../0_SPI_HOWTO/index.html">BBB SPI Howto</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BBB Yocto Howto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_Start_20190828.html">Start Yocto with Beaglebone Black</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../1_YOCTO_HOWTO/index.html">BBB Yocto Howto</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../2_practice/index.html">Practice</a></li>
@@ -140,13 +139,13 @@
         
           <li><a href="../index.html">Beaglebone Black</a> &raquo;</li>
         
-      <li>BBB SPI Howto</li>
+      <li>BBB Yocto Howto</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/1_bbb/0_SPI_HOWTO/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/1_bbb/1_YOCTO_HOWTO/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -159,36 +158,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="bbb-spi-howto">
-<h1>BBB SPI Howto<a class="headerlink" href="#bbb-spi-howto" title="제목 주소">¶</a></h1>
+  <div class="section" id="bbb-yocto-howto">
+<h1>BBB Yocto Howto<a class="headerlink" href="#bbb-yocto-howto" title="제목 주소">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="0_Introduction_20190505.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html">FBTFT with Beaglebone Black</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#id1">준비물</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#id2">설정이 필요한 것들</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#tft-lcd-bbb">TFT LCD와 BBB의 연결</a></li>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#spi-gpio">SPI / GPIO 설정</a></li>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#subsystem">Subsystem 사용</a></li>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#lcd-device-driver">LCD Device Driver</a></li>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#user-application">User Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0_Start_20190828.html">Start Yocto with Beaglebone Black</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_Start_20190828.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_Start_20190828.html#id1">개발 환경</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_Start_20190828.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_Start_20190828.html#download-yocto">Download Yocto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_Start_20190828.html#download-yocto-poky">Download Yocto &amp; Poky</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0_Start_20190828.html#download-meta-ti">Download meta-ti</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#h-w">H/W 연결</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#device-tree">Device Tree 편집</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#pin-mux-for-spi0">PIN MUX for SPI0</a></li>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#spi-enable">SPI Enable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_Start_20190828.html#set-up-the-build-environment">Set up the build environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_Start_20190828.html#set-up-the-sd-card">Set up the  SD card</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_Start_20190828.html#partitioning-the-sd-card">Partitioning the SD Card</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#fbtft">FBTFT 설정</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#id3">드라이버 로드</a></li>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#id4">드라이버 테스트</a></li>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#id5">추가 예제</a></li>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#id6">부팅 시 자동으로 로드되게 하기</a></li>
-<li class="toctree-l3"><a class="reference internal" href="1_FBTFT_with_BBB_20190521.html#id7">정리</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="0_Start_20190828.html#id2">시리얼 통신 환경 구축</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_Start_20190828.html#id3">환경변수 설정</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_Start_20190828.html#id4">정리</a></li>
 </ul>
 </li>
 </ul>
@@ -203,10 +193,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="0_Introduction_20190505.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="0_Start_20190828.html" class="btn btn-neutral float-right" title="Start Yocto with Beaglebone Black" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral float-left" title="Beaglebone Black" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../0_SPI_HOWTO/1_FBTFT_with_BBB_20190521.html" class="btn btn-neutral float-left" title="FBTFT with Beaglebone Black" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
