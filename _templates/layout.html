@@ -1,0 +1,23 @@
+{% extends "!layout.html" %}
+{% block extrahead %}
+
+
+
+{% endblock %}
+
+{% block footer %}
+
+<script>
+{{ super() }}
+</script>
+{% endblock %}
+
+{% block comments %}
+<script src="https://utteranc.es/client.js"
+        repo="hcyang1012/blog-comment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+{% endblock %}

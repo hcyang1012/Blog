@@ -32,8 +32,10 @@ release = '1.0'
 # ones.
 extensions = [
         'recommonmark',
-        'sphinx_markdown_tables'
+        'sphinx_markdown_tables',
+        'sphinx_sitemap'
 ]
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -48,7 +50,7 @@ language = 'ko'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store','venv','*.txt']
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -65,6 +67,7 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
 
 master_doc = 'index'
+
 
 source_suffix = {
         '.rst': 'restructuredtext',
