@@ -2,7 +2,7 @@
 
 이번 문서에서는 현재 프로젝트에 새로운 Layer를 생성하여 이를 빌드에 포함시키는 방법에 대해 정리해 보겠다.
 
-이 문서 역시 [지난 문서](blog/1_bbb/1_YOCTO_HOWTO/1_Add_A_New_Recipe_20190829.html)에 이어 작업하였으며, [Bootlin](https://bootlin.com/)의 [Yocto Project  and OpenEmbedded development course 의 자료](https://bootlin.com/doc/training/yocto/)를 참고하여 작성되었으니 자세한 설명은 자료를 참고하는 것을 추천한다.
+이 문서 역시 [지난 문서](1_Add_A_New_Recipe_20190829.html)에 이어 작업하였으며, [Bootlin](https://bootlin.com/)의 [Yocto Project  and OpenEmbedded development course 의 자료](https://bootlin.com/doc/training/yocto/)를 참고하여 작성되었으니 자세한 설명은 자료를 참고하는 것을 추천한다.
 
 ## 새 Layer 추가
 
