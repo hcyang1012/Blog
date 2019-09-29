@@ -162,7 +162,7 @@ $ sudo ./format_sdcard.sh /dev/sdc
 ```bash
 # boot 파티션에 부팅에 필요한 이미지 복사
 $ cp $BUILDDIR/tmp/deploy/images/beaglebone/{MLO,u-boot.img,zImage} /media/$USER/boot
-$ cp $BUILDDIR/tmp/deploy/images/beaglebone zImage-am335x-boneblack.dtb /media/$USER/boot/dtb
+$ cp $BUILDDIR/tmp/deploy/images/beaglebone/zImage-am335x-boneblack.dtb /media/$USER/boot/dtb
 ```
 
 ``` bash

@@ -114,6 +114,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="1_Add_A_New_Recipe_20190829.html">Start Yocto - Add a New Recipe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="2_Add_a_New_Layer_20190830.html">Start Yocto - 새 Layer 만들고 추가하기</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3_Modify_BSP_Layer_01_20190928.html">BSP Layer 수정하기 #1 - Kernel Configuration 수정하기</a></li>
 </ul>
 </li>
 </ul>
@@ -329,7 +330,7 @@ $ sudo ./format_sdcard.sh /dev/sdc
 <p>마운트가 정상적으로 되었다면 부팅용 이미지와 rootfs를 다음과 같은 명령으로 각 파티션에 복사하자.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># boot 파티션에 부팅에 필요한 이미지 복사</span>
 $ cp <span class="nv">$BUILDDIR</span>/tmp/deploy/images/beaglebone/<span class="o">{</span>MLO,u-boot.img,zImage<span class="o">}</span> /media/<span class="nv">$USER</span>/boot
-$ cp <span class="nv">$BUILDDIR</span>/tmp/deploy/images/beaglebone zImage-am335x-boneblack.dtb /media/<span class="nv">$USER</span>/boot/dtb
+$ cp <span class="nv">$BUILDDIR</span>/tmp/deploy/images/beaglebone/zImage-am335x-boneblack.dtb /media/<span class="nv">$USER</span>/boot/dtb
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># rootfs 파티션에 rootfs 파일들 복사</span>
