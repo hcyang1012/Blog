@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BSP Layer 수정하기 #2 - Kernel Module 추가하기 &mdash; blog 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../../genindex.html" />
+    <link rel="search" title="검색" href="../../search.html" />
+    <link rel="next" title="Practice" href="../../2_practice/index.html" />
+    <link rel="prev" title="BSP Layer 수정하기 #1 - Kernel Configuration 수정하기" href="3_Modify_BSP_Layer_01_20190928.html" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146838704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146838704-1');
+</script>
+
+
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> blog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../0_blog/index.html">About this blog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Beaglebone Black</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../0_SPI_HOWTO/index.html">BBB SPI Howto</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">BBB Yocto Howto</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="0_Start_20190828.html">Start Yocto with Beaglebone Black</a></li>
+<li class="toctree-l3"><a class="reference internal" href="1_Add_A_New_Recipe_20190829.html">Start Yocto - Add a New Recipe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2_Add_a_New_Layer_20190830.html">Start Yocto - 새 Layer 만들고 추가하기</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3_Modify_BSP_Layer_01_20190928.html">BSP Layer 수정하기 #1 - Kernel Configuration 수정하기</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">BSP Layer 수정하기 #2 - Kernel Module 추가하기</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recipe">Recipe 추가하기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#makefile">Makefile 작성</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#layer-conf-recipe">Layer conf 파일에 Recipe 추가</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">테스트</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">정리</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_practice/index.html">Practice</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Beaglebone Black</a> &raquo;</li>
+        
+          <li><a href="index.html">BBB Yocto Howto</a> &raquo;</li>
+        
+      <li>BSP Layer 수정하기 #2 - Kernel Module 추가하기</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/1_bbb/1_YOCTO_HOWTO/4_Modify_BSP_Layer_02_20191013.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bsp-layer-2-kernel-module">
+<h1>BSP Layer 수정하기 #2 - Kernel Module 추가하기<a class="headerlink" href="#bsp-layer-2-kernel-module" title="제목 주소">¶</a></h1>
+<p><a class="reference external" href="3_Modify_BSP_Layer_01_20190928.html">지난 문서</a>에 이어 이번 문서에서는 원하는 커널 모듈 (Kernel Module)을 추가하는 방법에 대해 기술하고자 한다. 커널 모듈을 추가하는 방법은 크게 1) 리눅스 커널에 직접 소스코드를 추가 하는 방법과 2) 외부에서 따로 빌드하는 방법(Out-of-tree)이 있다. 첫 번째 방법은 다음 문서에서 다루고, 이번 문서에서는 두 번째 방법을 다루겠다.</p>
+<div class="section" id="recipe">
+<h2>Recipe 추가하기<a class="headerlink" href="#recipe" title="제목 주소">¶</a></h2>
+<p>먼저, <a class="reference external" href="3_Modify_BSP_Layer_01_20190928.html">지난 문서</a>에서 만든 recipes-kernel 디렉토리에 새로 추가 할 커널 모듈의 Recipe를 추가해 보자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> meta-mylayer
+$ mkdir -p recipes-kernel/mymodule
+</pre></div>
+</div>
+<p>다음으로 다음과 같이 Recipe 파일들을 생성하자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tree mymodule 
+mymodule
+├── mymodule.inc
+└── mymodule_0.1.1.bb
+</pre></div>
+</div>
+<p><em>mymodule.inc</em> 파일은 버전에 관계 없이 소스코드를 가져오고, 빌드하기 위한 방법에 대한 내용들이 기술 할 파일이고, <em>mymodule_0.1.1.bb</em> 파일은 Version-Specific 내용들을 기술 할 파일이다.</p>
+<div class="section" id="mymodule-inc">
+<h3>mymodule.inc 파일 작성<a class="headerlink" href="#mymodule-inc" title="제목 주소">¶</a></h3>
+<p>mymodule_inc 파일의 나용은 다음과 같다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SUMMARY</span> <span class="o">=</span> <span class="s2">&quot;A sample out-of-tree kernel module&quot;</span>
+<span class="nv">SECTION</span> <span class="o">=</span> <span class="s2">&quot;base&quot;</span>
+
+inherit module
+
+<span class="nv">SRC_URI</span> <span class="o">=</span> <span class="s2">&quot;git://github.com/hcyang1012/Beaglebone_Kernel_Examples.git;branch=yocto_project&quot;</span>
+SRC_URI<span class="o">[</span>md5sum<span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;42a5d1604536ab735fab725d8a60c27b&quot;</span>
+<span class="nv">SRCREV</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">AUTOREV</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">S</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORKDIR</span><span class="si">}</span><span class="s2">/git/01_misc&quot;</span>
+
+<span class="nv">KERNEL_MODULE_AUTOLOAD</span> <span class="o">=</span> <span class="s2">&quot;01_misc&quot;</span>                                                                                        
+</pre></div>
+</div>
+<p>주요 내용들은 다음과 같다.</p>
+<ol class="simple">
+<li>inhert module : Kernel Module을 빌드하기 위한 Class인 <em>module</em> class를  상속받는다.</li>
+<li>SRC_URI : 이번 예제에서는 <a class="reference external" href="https://github.com/hcyang1012/Beaglebone_Kernel_Examples">미리 작성해 놓은 커널 모듈</a>을 다운로드 받아 빌드 할 것이다. 단, <em>yocto_project</em>라는 Branch를 사용할 것이기 때문에 SRC_URI의 끝에 branch parameter를 넣어 주었다.</li>
+<li>SRCREV : Git을 통해서 소스 코드를 다운로드 받는 경우에는 tag나 commit ID 등을 SRCREV 환경변수를 통해서 명시 해 주어야 한다. 특별히 사용해야 할 버전이 없는 경우라면 <em>${AUTOREV}</em> 변수로 최신 버전(HEAD)을 사용하도록 할 수 있다.</li>
+<li>일반적으로 S 변수는  <em>${WORKDIR}</em> 과 같은 형태로 지정하지만, git을 통해 다운로드 받는 경우에는 <em>${WORKDIR}/git</em>과 같이 git directory를 지정해 주어야 하고, 이번 예제의 경우 01_misc 디렉토리에 있는 소스코드를 사용할 것이기 때문에 <em>{WORKDIR}/git/01_misc</em> 과 같이 Working Directory를 지정해 주었다.</li>
+<li>마지막으로, 부팅 시 자동으로 모듈이 로드되게 하기 위해 KERNEL_MODULE_AUTOLOAD 환경 변수에 작성한 모듈의 이름을 지정해 주었다.</li>
+</ol>
+</div>
+<div class="section" id="mymodule-0-1-1-bb">
+<h3>mymodule_0.1.1.bb 파일 작성<a class="headerlink" href="#mymodule-0-1-1-bb" title="제목 주소">¶</a></h3>
+<p>mymodule_0.1.1.bb 파일의 내용은 다음과 같다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>require mymodule.inc
+
+<span class="nv">LICENSE</span> <span class="o">=</span> <span class="s2">&quot;GPLv3&quot;</span>
+<span class="nv">LIC_FILES_CHKSUM</span> <span class="o">=</span> <span class="s2">&quot;file://../LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464&quot;</span>
+</pre></div>
+</div>
+<p>특별한 내용은 없지만, LICENSE 파일의 경로가 Working Directory보다 상위 위치에 있기 때문에 <em>../LICENSE 로 명시한 것에 주의 하자</em>.</p>
+</div>
+</div>
+<div class="section" id="makefile">
+<h2>Makefile 작성<a class="headerlink" href="#makefile" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/hcyang1012/Beaglebone_Kernel_Examples">이번 문서에서 사용하는 예제 모듈</a>은 yocto_project라는 branch를 사용한다. 이렇게 Branch를 생성한 이유는 Makefile을 Yocto Project에 맞게 변경하기 위해서이다.  있는 그대로 템플릿으로 사용해도 좋고, <a class="reference external" href="https://github.com/hcyang1012/Beaglebone_Kernel_Examples/commit/6e64b720f2c5fabffe6c544ccf8b704f71b1324d">이 링크</a>를 통해 변경된 점이 무엇인지 한번 확인해 보는 것도 좋을 것이다.</p>
+</div>
+<div class="section" id="layer-conf-recipe">
+<h2>Layer conf 파일에 Recipe 추가<a class="headerlink" href="#layer-conf-recipe" title="제목 주소">¶</a></h2>
+<p>이제 Recipe의 작성은 끝이 났다. 마지막으로 빌드에 만들어 둔 Recipe가 추가되도록 meta-mylayer/conf/layer.conf에 다음 줄을 추가하자</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">IMAGE_INSTALL_append</span> <span class="o">=</span> <span class="s2">&quot; mymodule</span>
+</pre></div>
+</div>
+<p>작성 완료 된 파일 내용은 다음과 같다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># We have a conf and classes directory, add to BBPATH</span>
+BBPATH .<span class="o">=</span> <span class="s2">&quot;:</span><span class="si">${</span><span class="nv">LAYERDIR</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># We have recipes-* directories, add to BBFILES</span>
+<span class="nv">BBFILES</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">LAYERDIR</span><span class="si">}</span><span class="s2">/recipes-*/*/*.bb \</span>
+<span class="s2">            </span><span class="si">${</span><span class="nv">LAYERDIR</span><span class="si">}</span><span class="s2">/recipes-*/*/*.bbappend&quot;</span>
+
+<span class="nv">BBFILE_COLLECTIONS</span> <span class="o">+=</span> <span class="s2">&quot;meta-mylayer&quot;</span>
+BBFILE_PATTERN_meta-mylayer <span class="o">=</span> <span class="s2">&quot;^</span><span class="si">${</span><span class="nv">LAYERDIR</span><span class="si">}</span><span class="s2">/&quot;</span>
+BBFILE_PRIORITY_meta-mylayer <span class="o">=</span> <span class="s2">&quot;6&quot;</span>
+
+<span class="nv">IMAGE_INSTALL_append</span> <span class="o">=</span> <span class="s2">&quot; ninvaders&quot;</span>
+<span class="nv">IMAGE_INSTALL_append</span> <span class="o">=</span> <span class="s2">&quot; mymodule&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>테스트<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<p>이제 필요한 내용들은 모두 추가하였다. 이미지를 빌드 후 타겟이 올린 후 insmod 명령을 통해 01_misc 모듈이 추가되었는지 확인해 보자.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lsmod
+    Tainted: G  
+01_misc <span class="m">16384</span> <span class="m">0</span> - Live 0xbf000000 <span class="o">(</span>O<span class="o">)</span>
+</pre></div>
+</div>
+<p>위와 같이 01_misc 모듈이 부팅 시 자동으로 로드되어 있는 것을 확인할 수 있다.</p>
+</div>
+<div class="section" id="id2">
+<h2>정리<a class="headerlink" href="#id2" title="제목 주소">¶</a></h2>
+<p>이번 문서에서는 Out-of-tree Kernel Module를 구성하는 방법에 대해 알아보았다. 이번 예제도 일반적인 Recipe를 만드는 것과 절차적으로는 크게 다를 것이 없으나, 1) <em>module</em> 이라는 bbclass를 상속받아 Recipe를 만들었다는 점과, 2) <em>KERNEL_MODULE_AUTOLOAD</em> 환경 변수를 통해 자동으로 모듈이 로드될 수 있도록 한 점이 이제까지의 예제들과는 다른 점이였다.</p>
+<p>다음 문서에서는 직접 리눅스 커널에 모듈을 추가해 봄으로써 커널 소스 코드를 수정하는 방법에 대해 알아 볼 것이다.</p>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+<script src="https://utteranc.es/client.js"
+        repo="hcyang1012/blog-comment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../2_practice/index.html" class="btn btn-neutral float-right" title="Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="3_Modify_BSP_Layer_01_20190928.html" class="btn btn-neutral float-left" title="BSP Layer 수정하기 #1 - Kernel Configuration 수정하기" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Heecheol Yang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+
+<script>
+ 
+</script>
+
+
+</body>
+</html>
