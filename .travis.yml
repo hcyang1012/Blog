@@ -5,6 +5,7 @@ python:
 
 install:
       - sudo pip install -U -r requirements.txt
+      - sudo apt-get -y install pandoc
 
 script:
   # Use Sphinx to make the html docs
