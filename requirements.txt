@@ -4,4 +4,5 @@ sphinx_rtd_theme
 sphinx-markdown-tables
 sphinx-sitemap
 travis-sphinx
-
+nbsphinx
+jupyter_client
