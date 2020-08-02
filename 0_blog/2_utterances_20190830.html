@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<html class="writer-html4" lang="ko" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -25,18 +30,15 @@
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="색인" href="../genindex.html" />
     <link rel="search" title="검색" href="../search.html" />
-    <link rel="next" title="Beaglebone Black" href="../1_bbb/index.html" />
+    <link rel="next" title="Sphinx에서 Jupyter Notebook 사용하기" href="3_Jupyter_In_Sphinx.html" />
     <link rel="prev" title="작성해야 할 글감" href="1_Todo_20190521.html" />
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -65,7 +67,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> blog
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> blog
           
 
           
@@ -88,6 +90,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -114,6 +117,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="3_Jupyter_In_Sphinx.html">Sphinx에서 Jupyter Notebook 사용하기</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../1_bbb/index.html">Beaglebone Black</a></li>
@@ -123,6 +127,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -161,7 +166,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">About this blog</a> &raquo;</li>
         
@@ -184,7 +189,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="utterances">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="utterances">
 <h1>utterances로 댓글 시스템 구축하기<a class="headerlink" href="#utterances" title="제목 주소">¶</a></h1>
 <p>블로그에 댓글 시스템을 구축하고 싶은데 많이 쓰이는 <a class="reference external" href="https://disqus.com/">DISQUS</a>는 사용이 뭔가 불편하고 원하지 않는 댓글도 많이 달린다는 이야기가 보여서 우연히 찾은 <a class="reference external" href="https://utteranc.es/">utterances</a>  를 쓰기로 했다.</p>
 <p>utterances는 동작 방식이 독특하다.글에 달리는 댓글들이 Github의 이슈 게시판에 이슈로서 등록되며, 이 이슈들을 댓글 창 형태로 보여준다. 설치도 간단하다.</p>
@@ -288,7 +317,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../1_bbb/index.html" class="btn btn-neutral float-right" title="Beaglebone Black" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="3_Jupyter_In_Sphinx.html" class="btn btn-neutral float-right" title="Sphinx에서 Jupyter Notebook 사용하기" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="1_Todo_20190521.html" class="btn btn-neutral float-left" title="작성해야 할 글감" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -300,11 +329,19 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Heecheol Yang
+        
+        &copy; 저작권 2019, Heecheol Yang
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -315,7 +352,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

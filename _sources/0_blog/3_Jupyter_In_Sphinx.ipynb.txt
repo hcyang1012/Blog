@@ -1,0 +1,117 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "3_Jupyter_In_Sphinx.ipynb",
+      "provenance": [],
+      "collapsed_sections": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "6bwFqeBX1015",
+        "colab_type": "text"
+      },
+      "source": [
+        "# Sphinx에서 Jupyter Notebook 사용하기"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "IdkDPApW4AsU",
+        "colab_type": "text"
+      },
+      "source": [
+        "요즘 Jupyter Notebook에서 작업을 많이 하다 보니 이를 Sphinx + Markdown 기반의 블로그에 업로드 하려면 변환을 해야 하는 작업이 필요했다. \n",
+        "\n",
+        "이게 귀찮아서 이것저것 찾아보니 [nbsphinx](https://nbsphinx.readthedocs.io/en/0.7.1/) 라는 것이 있어서 .ipynb 파일을 그대로 이용 할 수 있었다. 이 글에서는 이에 대해 정리해 보자."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "_To9J3GB49ei",
+        "colab_type": "text"
+      },
+      "source": [
+        "## 환경 설정"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "8_H8JYxt6JC0",
+        "colab_type": "text"
+      },
+      "source": [
+        "## conf.py  변경\n",
+        "\n",
+        "\n",
+        "\n",
+        "```python\n",
+        "extensions = [\n",
+        "        'recommonmark',\n",
+        "        'sphinx_markdown_tables',\n",
+        "        'nbsphinx', #이 라인을 추가\n",
+        "]\n",
+        "```\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "MV6L53KC7dH6",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "CY723jJC7gFR",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Index.rst 파일 변경\n",
+        "```\n",
+        "About this blog\n",
+        "================================\n",
+        "\n",
+        ".. toctree::\n",
+        "\t:glob:\n",
+        "\t:titlesonly:\n",
+        "\t\n",
+        "\t3_python_test # 추가를 원하는 .ipynb 파일의 확장자(.ipynb)를 제외한 파일 명을 toctree에 추가\n",
+        "\t./**\n",
+        "```\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Yy-exl2D7ghV",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 1,
+      "outputs": []
+    }
+  ]
+}
