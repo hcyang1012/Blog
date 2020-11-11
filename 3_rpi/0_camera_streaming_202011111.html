@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Practice &mdash; blog 1.0 documentation</title>
+  <title>Raspberry Pi Camera Web Streaming &mdash; blog 1.0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
     
     <link rel="index" title="색인" href="../genindex.html" />
     <link rel="search" title="검색" href="../search.html" />
-    <link rel="next" title="Leetcode Practice" href="0_leetcode/index.html" />
-    <link rel="prev" title="Raspberry Pi Camera Web Streaming" href="../3_rpi/0_camera_streaming_202011111.html" />
+    <link rel="next" title="Practice" href="../2_practice/index.html" />
+    <link rel="prev" title="Raspberry Pi" href="index.html" />
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146838704-1"></script>
@@ -101,11 +101,16 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../0_blog/index.html">About this blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_bbb/index.html">Beaglebone Black</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_rpi/index.html">Raspberry Pi</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Practice</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/index.html">Leetcode Practice</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raspberry Pi</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Raspberry Pi Camera Web Streaming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enable">카메라 Enable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mjpg-streamer">mjpg-streamer 빌드</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streaming">Streaming 시작</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_practice/index.html">Practice</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../999_etc/index.html">Etc.</a></li>
 </ul>
 
@@ -153,13 +158,15 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Practice</li>
+          <li><a href="index.html">Raspberry Pi</a> &raquo;</li>
+        
+      <li>Raspberry Pi Camera Web Streaming</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/2_practice/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/3_rpi/0_camera_streaming_202011111.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -196,24 +203,37 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="practice">
-<h1>Practice<a class="headerlink" href="#practice" title="제목 주소">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="0_leetcode/index.html">Leetcode Practice</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/0_TwoSum_20190506.html">Two Sum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/1_Minimum_Absolute_Difference_In_BST_20190506.html">Minimum Absolute Difference in BST</a></li>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/2_Subtree_of_Another_Tree_20190506.html">Subtree of Another Tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/3_Add_Two_Numbers_20190507.html">Add Two Numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/4_Longest_Substring_Without_Repeating_Characters_20190507.html">Longest Substring Without Repeating Characters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/5_Longest_Palindromic_Substring_20190509.html">Longest Palindromic Substring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/6_Container_With_Most_Water_20190509.html">Container With Most Water</a></li>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/7_3sum_20190512.html">3 Sum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/8_Letter_Combinations_of_a_Phone_Number_20190512.html">Letter Combinations of a Phone Number</a></li>
-<li class="toctree-l2"><a class="reference internal" href="0_leetcode/9_Removed_Nthd_Noded_Fromd_End_of_List_20190512.html">Remove Nth Node From End of List</a></li>
-</ul>
-</li>
-</ul>
+<div class="section" id="raspberry-pi-camera-web-streaming">
+<h1>Raspberry Pi Camera Web Streaming<a class="headerlink" href="#raspberry-pi-camera-web-streaming" title="제목 주소">¶</a></h1>
+<p>라즈베리 파이는 카메라 모듈을 장착하여 사용이 가능하다. 이 카메라로 촬영한 영상을 웹으로 볼 수 있도록 해 보자.</p>
+<div class="section" id="enable">
+<h2>카메라 Enable<a class="headerlink" href="#enable" title="제목 주소">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo raspi-config
+# Interfacing Options -&gt; Camera -&gt; Yes -&gt; Finish
+$ ls /dev/video0
+# Video 0 가 나타나야 한다.
+</pre></div>
+</div>
+</div>
+<div class="section" id="mjpg-streamer">
+<h2>mjpg-streamer 빌드<a class="headerlink" href="#mjpg-streamer" title="제목 주소">¶</a></h2>
+<p>여기서는 mjpg-streamer를 사용할 것이다. 소스코드를 먼저 빌드하자.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 필요한 패키지 설치
+$ sudo apt-get install cmake python-pil python3-pil libjpeg-dev build-essential
+# mjpg-streamer 다운로드
+$ git clone https://github.com/jacksonliam/mjpg-streamer.git
+$ cd mjpg-streamer/mjpg-streamer-experimental
+$ make
+$ sudo make install
+</pre></div>
+</div>
+</div>
+<div class="section" id="streaming">
+<h2>Streaming 시작<a class="headerlink" href="#streaming" title="제목 주소">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mjpg_streamer -o &quot;output_http.so -p 8090 -w /usr/local/share/mjpg-streamer/www/&quot; -i &quot;input_uvc.so&quot;
+</pre></div>
+</div>
+<p>이후 웹 브라우저에서 《http://&lt;라즈베리파이 IP 주소&gt;:8090》 으로 접속하면 화면을 확인 할 수 있다.</p>
 </div>
 </div>
 
@@ -237,10 +257,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="0_leetcode/index.html" class="btn btn-neutral float-right" title="Leetcode Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../2_practice/index.html" class="btn btn-neutral float-right" title="Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../3_rpi/0_camera_streaming_202011111.html" class="btn btn-neutral float-left" title="Raspberry Pi Camera Web Streaming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Raspberry Pi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
